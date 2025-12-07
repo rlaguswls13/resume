@@ -16,7 +16,7 @@
       "DevOps (K8s, Docker)"
     ],
     "education": [
-      { "degree": "컴퓨터공학과 (4학년 재학)", "year": "2024 ~ Present", "school": "서울사이버대학교" },
+      { "degree": "컴퓨터공학과 (4학년 졸업예정)", "year": "2024 ~ Present", "school": "서울사이버대학교" },
       { "degree": "신소재공학과 (학사)", "year": "2012 ~ 2018", "school": "서울과학기술대학교" }
     ]
   },
@@ -80,8 +80,8 @@
     "work": [
       {
         "title": "개발2팀 / 프로",
-        "date": "2024.08 -| 굿모닝아이텍(주)",
-        "description": ""
+        "date": "2024.08 - | 휴머스온(주)",
+        "description": "자사 메시징(이메일/푸시/문자/카카오비즈) 채널 통합지원 및 커스터마이징 프로젝트 수행"
       },
       {
         "title": "Cloud Management Platform 유지보수팀 / 대리",
@@ -126,7 +126,7 @@
     "intro": "새로운 기술 도전과 안정적인 시스템 구축에 열정이 있습니다. 연락 주시면 24시간 이내에 회신 드리겠습니다.",
     "email": "gcd1324@gmail.com",
     "links": [
-      { "label": "Mobile", "url": "tel:010-3545-8473", "icon": "📱" },
+      { "label": "Mobile", "url": "tel:010-3545-8473", "icon": "📱" }
     ]
   }
 }
