@@ -5,19 +5,18 @@
     "organization": "Seoul, Korea",
     "image": "myImage.png",
     "bio_title": "소개 / About Me",
-    "bio_text": "Java & Spring 기반의 백엔드 개발 및 JavaScript & React/AngularJS 기반의 프론트엔드 개발 역량을 보유하고 있습니다. 지속 가능한 개발과 데이터 분석을 통한 가치 창출에 관심이 많으며, 끊임없이 성장하는 개발자입니다.",
+    "bio_text": "Java & Spring Boot 기반의 견고한 백엔드 아키텍처 설계와 React를 활용한 프론트엔드 개발 역량을 두루 갖춘 풀스택 지향 개발자입니다. LGU+, 스마일게이트 등 엔터프라이즈 환경에서 대용량 메시징 시스템을 구축하고, Okta SSO 및 Spring Security를 활용한 인증/인가 고도화 작업을 주도했습니다. 단순 개발을 넘어 레거시 시스템의 마이그레이션과 DB 쿼리 튜닝, 비동기 처리를 통한 트래픽 분산 등 시스템 성능 최적화에 강점이 있으며, 데이터 기반의 장애 분석을 통해 안정적인 서비스를 제공하는 데 가치를 둡니다.",
     "social": [
-      { "icon": "📧", "link": "mailto:gcd1324@gmail.com" },
-      { "icon": "🐙", "link": "https://github.com/username" },
-      { "icon": "💼", "link": "https://linkedin.com/in/username" }
+      { "icon": "📧", "link": "mailto:gcd1324@gmail.com" }
     ],
     "interests": [
       "Sustainable Development",
+      "High Volume Traffic",
       "Data Analysis",
       "DevOps (K8s, Docker)"
     ],
     "education": [
-      { "degree": "컴퓨터공학과 (3학년 재학)", "year": "2024 ~ Present", "school": "서울사이버대학교" },
+      { "degree": "컴퓨터공학과 (4학년 재학)", "year": "2024 ~ Present", "school": "서울사이버대학교" },
       { "degree": "신소재공학과 (학사)", "year": "2012 ~ 2018", "school": "서울과학기술대학교" }
     ]
   },
@@ -26,39 +25,64 @@
       { "name": "Java & SpringBoot", "percent": 90, "icon": "☕" },
       { "name": "Kubernetes & Docker", "percent": 80, "icon": "☸️" },
       { "name": "React & JS", "percent": 75, "icon": "⚛️" },
-      { "name": "SQL (MySQL/MariaDB)", "percent": 80, "icon": "🗄️" }
+      { "name": "SQL (MySQL/MariaDB/Oracle)", "percent": 80, "icon": "🗄️" }
     ],
     "hobbies": [
-      { "name": "온라인 게임", "percent": 50, "icon": "🧗" },
       { "name": "헬스", "percent": 30, "icon": "🧗" },
       { "name": "기술 블로깅", "percent": 20, "icon": "📝" }
     ]
   },
   "projects": [
+      {
+      "title": "엔터프라이즈 이메일 시스템 SSO 연동 및 DB 마이그레이션",
+      "period": "2025.08 - ",
+      "tags": ["Java 1.8", "Spring Boot", "Spring Security", "MySQL", "Oracle", "RedHat"],
+      "description": "자체 SSO Agent와 Spring Security를 연동하여 솔루션 내 맞춤형 권한(Authorization) 체계를 구축했습니다. Oracle에서 MySQL로의 DB 전환 간 데이터 정합성 검증 및 마이그레이션을 수행하고, 별도의 인증 전용 이메일 발송 채널을 신규 개발했습니다.",
+      "link": "#"
+    },
     {
-      "title": "☁️ 통합관리시스템 클라우드 이전",
+      "title": "메세징 관리 시스템 Okta SSO 연동 및 접근 제어 고도화",
+      "period": "2024.08 - 2025.02",
+      "tags": ["Java 1.8", "Spring Boot", "Okta SSO", "Interceptor", "RedHat", "Maven"],
+      "description": "Okta API 기반의 SSO/SLO 필터 서비스를 개발하고, 고객사 인사 정보와 솔루션 계정 간의 동기화(Sync) 로직을 구현하여 사용자 관리를 자동화했습니다. 또한 Interceptor를 활용한 메뉴별 접근 제어(RBAC) 기능을 구현하여 보안성을 강화했습니다.",
+      "link": "#"
+    },
+    {
+      "title": "대규모 엔터프라이즈 솔루션 기술 지원 및 유지보수",
+      "period": "2023.03 - 2024.08",
+      "tags": ["Java", "Jira", "Confluence", "Troubleshooting"],
+      "description": "56여 개 주요 기업 고객사(금융, 통신, 항공 등)의 기술 이슈에 대응하고 버그 픽스를 전담했습니다. Jira와 Confluence를 활용해 이슈 트래킹 및 기술 문서를 자산화하고, 레거시 시스템 마이그레이션 지원을 통해 서비스 안정성을 확보했습니다.",
+      "link": "#"
+    },
+    {
+      "title": "사내 통합지원시스템 고도화",
+      "period": "2023.03 - 2024.02",
+      "tags": ["React", "Gradle", "Java 15", "Legacy Migration"],
+      "description": "Legacy(Java 1.6, JSP) 시스템을 최신 스택(Java 15, React)으로 전환. 업무/인사/사업관리 메뉴를 신규 개발하고 유저 데이터를 마이그레이션하여 업무 효율성을 증대시켰습니다.",
+      "link": "#"
+    },
+    {
+      "title": "통합관리시스템 클라우드 이전",
       "period": "2023.09 - 2023.10",
       "tags": ["Azure", "CentOS", "Security", "Migration"],
       "description": "Private VM 서버를 Azure 클라우드 환경으로 이관 구축. 보안 인증서 적용, 네트워크 접근 제어(IP/Port), 컨테이너 기반 포털 구성을 통해 안정성과 보안성을 강화했습니다.",
       "link": "#"
     },
     {
-      "title": "⚙️ DevOps 포털 개발 및 유지보수",
+      "title": "DevOps 포털 개발 및 유지보수",
       "period": "2021.09 - 2024.02",
       "tags": ["Java", "SpringBoot", "K8s", "MSA"],
       "description": "VMware/K8s 기반 DevOps 포털의 모놀리식 구조를 MSA 지향 구조로 리팩토링. 도메인 주도 설계(DDD) 도입 및 코드 가독성을 개선하고, Docker 컨테이너 배포 프로세스를 최적화했습니다.",
-      "link": "#"
-    },
-    {
-      "title": "🖥️ 사내 통합지원시스템 고도화",
-      "period": "2023.03 - 2024.02",
-      "tags": ["React", "Gradle", "Java 15", "Legacy Migration"],
-      "description": "Legacy(Java 1.6, JSP) 시스템을 최신 스택(Java 15, React)으로 전환. 업무/인사/사업관리 메뉴를 신규 개발하고 유저 데이터를 마이그레이션하여 업무 효율성을 증대시켰습니다.",
       "link": "#"
     }
   ],
   "resume": {
     "work": [
+      {
+        "title": "개발2팀 / 프로",
+        "date": "2024.08 -| 굿모닝아이텍(주)",
+        "description": ""
+      },
       {
         "title": "Cloud Management Platform 유지보수팀 / 대리",
         "date": "2021.09 - 2024.02 | 굿모닝아이텍(주)",
@@ -103,8 +127,6 @@
     "email": "gcd1324@gmail.com",
     "links": [
       { "label": "Mobile", "url": "tel:010-3545-8473", "icon": "📱" },
-      { "label": "GitHub", "url": "https://github.com", "icon": "🐙" },
-      { "label": "Blog", "url": "https://velog.io", "icon": "📝" }
     ]
   }
 }
