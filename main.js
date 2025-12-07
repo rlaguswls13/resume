@@ -42,7 +42,6 @@ function loadProjects(data) {
             <div style="margin-bottom:15px;">${proj.tags.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
             <p style="color:#aaa; font-size:0.9rem;">${proj.period}</p>
             <p>${proj.description}</p>
-            <div style="margin-top:20px;"><a href="${proj.link}">View Code &rarr;</a></div>
         </div>
     `).join('');
 }
@@ -64,4 +63,5 @@ function loadContact(data) {
     document.getElementById('contact-links').innerHTML = data.contact.links.map(l => 
         `<li style="margin-top:15px;">${l.icon} <b>${l.label}:</b> <a href="${l.url}" target="_blank">${l.url}</a></li>`
     ).join('');
+
 }
