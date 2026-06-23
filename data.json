@@ -1,0 +1,148 @@
+{
+  "profile": {
+    "name": "김현진",
+    "jobTitle": "Full-Stack Developer",
+    "image": "2022_picture.jpg"
+  },
+  "contact": [
+    {
+      "icon": "📱",
+      "label": "전화",
+      "value": "010-3545-8473",
+      "href": "tel:010-3545-8473",
+      "isLink": true
+    },
+    {
+      "icon": "📧",
+      "label": "이메일",
+      "value": "gcd1324@gmail.com",
+      "href": "mailto:gcd1324@gmail.com",
+      "isLink": true
+    },
+    {
+      "icon": "📍",
+      "label": "위치",
+      "value": "Seoul, Korea",
+      "isLink": false
+    },
+    {
+      "icon": "🔗",
+      "label": "GitHub",
+      "value": "GitHub",
+      "href": "https://github.com/rlaguswls13",
+      "isLink": true,
+      "target": "_blank"
+    },
+    {
+      "icon": "📝",
+      "label": "블로그",
+      "value": "블로그",
+      "href": "https://rlaguswls13.github.io/resume/",
+      "isLink": true,
+      "target": "_blank"
+    }
+  ],
+  "skills": {
+    "프로그래밍": ["Python", "Java", "SQL"],
+    "클라우드/DevOps": ["Kubernetes", "Docker", "AWS"],
+    "데이터": ["Elasticsearch", "빅데이터", "데이터분석"]
+  },
+  "education": [
+    {
+      "school": "KH정보교육원",
+      "degree": "Python & Elasticsearch 금융솔루션",
+      "period": "2026.05 - 현재"
+    },
+    {
+      "school": "서울사이버대학교",
+      "degree": "컴퓨터공학과 졸업",
+      "period": "2024.03 - 2026.02"
+    },
+    {
+      "school": "KH정보교육원",
+      "degree": "UI/UX 웹 콘텐츠 융합 개발자",
+      "period": "2021.03 - 2021.08"
+    },
+    {
+      "school": "서울과학기술대학교",
+      "degree": "신소재공학과 졸업 (공학사)",
+      "period": "2012.03 - 2018.02"
+    }
+  ],
+  "introduction": {
+    "subtitle": "인프라부터 엔드유저의 경험까지, 유기적으로 아키텍처를 설계하는 개발자",
+    "cards": [
+      {
+        "number": "01",
+        "title": "전 계층을 아우르는 IO 중심의 개발 경험",
+        "description": "애플리케이션 로직에 갇히지 않고 리소스의 In-Out 프로세스, OS 가상화 레이어, 네트워크 전송 계층까지 고려하여 대용량 트래픽의 병목을 근본적으로 해결합니다."
+      },
+      {
+        "number": "02",
+        "title": "비즈니스 기회비용을 최소화하는 유연한 설계",
+        "description": "엔드유저의 니즈를 정확히 명세화하고 구조를 모듈화하여, 갑작스러운 요구사항 변경 시에도 기회비용과 개발 공수를 최소화하는 확장성 있는 코드를 작성합니다."
+      },
+      {
+        "number": "03",
+        "title": "정량적 데이터 기반의 기술 설득과 조율",
+        "description": "단기적인 '땜질식 코드'의 위험성을 아키텍처적 부하 수치 및 장기적 공수 데이터로 정량화하여, 리더와 동료가 신뢰할 수 있는 합리적인 대안을 제시합니다."
+      },
+      {
+        "number": "04",
+        "title": "기술 변화를 실무 생산성으로 전환하는 속도",
+        "description": "인프라 트렌드부터 최신 AI 도구까지 빠르게 학습하고 검증하며, 단순 도입을 넘어 실제 팀의 태스크 처리 속도를 배가시키는 효율성을 추구합니다."
+      },
+      {
+        "number": "05",
+        "title": "상호 존중과 객관적 논증을 통한 생산적 협업",
+        "description": "개발 지식을 아낌없이 공유하고, 동료와 싱크를 맞추는 과정을 중요하게 여깁니다. 의견이 갈릴 때는 상대방의 비즈니스 논리를 먼저 존중하고, 합의점을 도출하기 위해 프로토타입 코드나 정량적 지표를 제시하며 생산적인 결론을 이끌어냅니다."
+      }
+    ]
+  },
+  "experience": [
+    {
+      "company": "휴머스온(주)",
+      "position": "개발2팀 / 프로",
+      "period": "2024.08 - 2026.02",
+      "responsibilities": [
+        "자사 메시징(이메일/푸시/문자/카카오비즈) 채널 통합지원 및 커스터마이징 프로젝트 수행",
+        "통합 메시징 플랫폼 개발 및 유지보수"
+      ]
+    },
+    {
+      "company": "굿모닝아이텍(주)",
+      "position": "Cloud Management Platform 유지보수팀 / 대리",
+      "period": "2021.09 - 2024.02",
+      "responsibilities": [
+        "DevOps 포털 리팩토링 및 유지보수",
+        "통합관리시스템 클라우드 마이그레이션 주도",
+        "Kubernetes 및 Docker 환경 최적화 수행"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "title": "정보처리기사",
+      "date": "2026.05",
+      "description": "필기합격 (2026.07 실기 예정)"
+    },
+    {
+      "title": "ADsP (데이터분석 준전문가)",
+      "date": "2024.06",
+      "description": "한국데이터산업진흥원 | 자격번호: ADsP-041003058",
+      "details": ["데이터 이해, 데이터 분석 기획, 데이터 분석 역량"]
+    },
+    {
+      "title": "SQLD (SQL 개발자)",
+      "date": "2024.04",
+      "description": "한국데이터산업진흥원 | 자격번호: SQLD-052008412",
+      "details": ["데이터 모델링, SQL 기본 및 활용 능력"]
+    },
+    {
+      "title": "CKA (Certified Kubernetes Administrator)",
+      "date": "2023.04 - 2026.04",
+      "description": "CNCF | Cert ID: LF-b2czca9bdo",
+      "details": ["쿠버네티스 관리자 자격 인증"]
+    }
+  ]
+}

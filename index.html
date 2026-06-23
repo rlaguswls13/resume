@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오 - 이력서</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 왼쪽 사이드바 -->
+        <aside class="sidebar">
+            <section class="profile" id="profile"></section>
+            <section class="contact" id="contact"></section>
+            <section class="skills" id="skills"></section>
+            <section class="education" id="education"></section>
+        </aside>
+
+        <!-- 가운데: 자기소개 -->
+        <section class="introduction">
+            <h2>자기소개</h2>
+            <p class="intro-subtitle" id="introSubtitle"></p>
+            <div class="cards-grid" id="cardsGrid"></div>
+        </section>
+
+        <!-- 우측: 경력 + 자격증 -->
+        <aside class="right-content">
+            <section class="experience" id="experience"></section>
+            <section class="projects" id="certifications"></section>
+        </aside>
+    </div>
+
+    <!-- 테마 스위처 -->
+    <div class="theme-switcher">
+        <span class="theme-label">THEME</span>
+        <button class="theme-btn theme-btn--gold active"      data-theme="gold"      title="Warm Gold"              onclick="setTheme('gold')"></button>
+        <button class="theme-btn theme-btn--botanical"        data-theme="botanical" title="Botanical Forest"        onclick="setTheme('botanical')"></button>
+        <button class="theme-btn theme-btn--ocean"            data-theme="ocean"     title="Deep Ocean"             onclick="setTheme('ocean')"></button>
+        <button class="theme-btn theme-btn--charcoal"         data-theme="charcoal"  title="Charcoal &amp; Purple" onclick="setTheme('charcoal')"></button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
