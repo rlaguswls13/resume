@@ -1,71 +1,155 @@
-/* ============ 색상 팔레트 ============ */
+/* ============ Primitive Tokens (Layer 1 — raw values) ============ */
+:root {
+    /* White */
+    --primitive-white:          #ffffff;
+
+    /* Neutral */
+    --primitive-neutral-100:    #f5f5f5;
+    --primitive-neutral-150:    #f0f0f0;
+    --primitive-neutral-200:    #efefef;
+    --primitive-neutral-300:    #e0e0e0;
+    --primitive-neutral-400:    #999999;
+    --primitive-neutral-500:    #666666;
+    --primitive-neutral-850:    #333333;
+    --primitive-neutral-900:    #2c2c2c;
+
+    /* Gold */
+    --primitive-gold-400:       #d4af8c;
+    --primitive-gold-500:       #c9a07f;
+
+    /* Forest (Botanical) */
+    --primitive-forest-50:      #f4f6f4;
+    --primitive-forest-100:     #e9ede9;
+    --primitive-forest-150:     #dfe5df;
+    --primitive-forest-200:     #e2e8e2;
+    --primitive-forest-300:     #8da192;
+    --primitive-forest-500:     #58675c;
+    --primitive-forest-600:     #4f6d7a;
+    --primitive-forest-700:     #3a5a40;
+    --primitive-forest-800:     #2f3e46;
+    --primitive-forest-950:     #1b261f;
+
+    /* Slate (Ocean) */
+    --primitive-slate-50:       #f8fafc;
+    --primitive-slate-100:      #f1f5f9;
+    --primitive-slate-200:      #e2e8f0;
+    --primitive-slate-300:      #94a3b8;
+    --primitive-slate-500:      #475569;
+    --primitive-slate-650:      #334155;
+    --primitive-slate-900:      #0f172a;
+    --primitive-blue-700:       #1d4ed8;
+    --primitive-blue-800:       #1e40af;
+
+    /* Gray / Indigo (Charcoal) */
+    --primitive-gray-50:        #f9fafb;
+    --primitive-gray-100:       #f3f4f6;
+    --primitive-gray-200:       #e5e7eb;
+    --primitive-gray-400:       #9ca3af;
+    --primitive-gray-600:       #4b5563;
+    --primitive-gray-700:       #374151;
+    --primitive-indigo-500:     #6366f1;
+    --primitive-indigo-600:     #4f46e5;
+    --primitive-indigo-950:     #1e1b4b;
+
+    /* Shadow colors */
+    --primitive-shadow-neutral-sm:      rgba(0, 0, 0, 0.08);
+    --primitive-shadow-neutral-md:      rgba(0, 0, 0, 0.12);
+    --primitive-shadow-forest-sm:       rgba(27, 38, 31, 0.06);
+    --primitive-shadow-forest-md:       rgba(27, 38, 31, 0.1);
+    --primitive-shadow-ocean-sm:        rgba(15, 23, 42, 0.05);
+    --primitive-shadow-ocean-md:        rgba(15, 23, 42, 0.1);
+    --primitive-shadow-indigo-sm:       rgba(99, 102, 241, 0.06);
+    --primitive-shadow-indigo-md:       rgba(99, 102, 241, 0.12);
+
+    /* Overlay */
+    --primitive-overlay-15:             rgba(0, 0, 0, 0.15);
+    --primitive-overlay-20:             rgba(0, 0, 0, 0.2);
+
+    /* Glow */
+    --primitive-glow-gold:              rgba(212, 175, 140, 0.05);
+    --primitive-glow-forest:            rgba(58, 90, 64, 0.05);
+    --primitive-glow-ocean:             rgba(30, 64, 175, 0.05);
+    --primitive-glow-indigo:            rgba(99, 102, 241, 0.05);
+
+    /* Card gradients */
+    --primitive-card-bg-default:        linear-gradient(135deg, rgba(250, 250, 250, 0.7) 0%, rgba(245, 245, 245, 0.7) 100%);
+    --primitive-card-bg-hover-default:  linear-gradient(135deg, rgba(252, 252, 252, 0.85) 0%, rgba(248, 248, 248, 0.85) 100%);
+}
+
+/* ============ Semantic Tokens (Layer 2 — purpose-based) ============ */
 
 /* 기본 테마: Warm Gold */
 :root {
-    --primary-accent: #d4af8c;
-    --primary-accent-hover: #c9a07f;
-    --text-dark: #2c2c2c;
-    --text-medium: #666;
-    --text-light: #999;
-    --text-body: #333;
-    --bg-white: #ffffff;
-    --bg-light: #f5f5f5;
-    --bg-lighter: #f0f0f0;
-    --bg-gradient-light: #efefef;
-    --border-light: #e0e0e0;
-    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.12);
+    --primary-accent:        var(--primitive-gold-400);
+    --primary-accent-hover:  var(--primitive-gold-500);
+    --text-dark:             var(--primitive-neutral-900);
+    --text-medium:           var(--primitive-neutral-500);
+    --text-light:            var(--primitive-neutral-400);
+    --text-body:             var(--primitive-neutral-850);
+    --bg-white:              var(--primitive-white);
+    --bg-light:              var(--primitive-neutral-100);
+    --bg-lighter:            var(--primitive-neutral-150);
+    --bg-gradient-light:     var(--primitive-neutral-200);
+    --border-light:          var(--primitive-neutral-300);
+    --shadow-sm:             0 4px 15px var(--primitive-shadow-neutral-sm);
+    --shadow-md:             0 8px 20px var(--primitive-shadow-neutral-md);
+    --card-bg:               var(--primitive-card-bg-default);
+    --card-bg-hover:         var(--primitive-card-bg-hover-default);
+    --card-accent-glow:      var(--primitive-glow-gold);
 }
 
 /* 테마: Botanical Forest & Warm Ochre */
 [data-theme="botanical"] {
-    --primary-accent: #3a5a40;
-    --primary-accent-hover: #4f6d7a;
-    --text-dark: #1b261f;
-    --text-medium: #58675c;
-    --text-light: #8da192;
-    --text-body: #2f3e46;
-    --bg-white: #ffffff;
-    --bg-light: #f4f6f4;
-    --bg-lighter: #e9ede9;
-    --bg-gradient-light: #dfe5df;
-    --border-light: #e2e8e2;
-    --shadow-sm: 0 4px 15px rgba(27, 38, 31, 0.06);
-    --shadow-md: 0 8px 20px rgba(27, 38, 31, 0.1);
+    --primary-accent:        var(--primitive-forest-700);
+    --primary-accent-hover:  var(--primitive-forest-600);
+    --text-dark:             var(--primitive-forest-950);
+    --text-medium:           var(--primitive-forest-500);
+    --text-light:            var(--primitive-forest-300);
+    --text-body:             var(--primitive-forest-800);
+    --bg-white:              var(--primitive-white);
+    --bg-light:              var(--primitive-forest-50);
+    --bg-lighter:            var(--primitive-forest-100);
+    --bg-gradient-light:     var(--primitive-forest-150);
+    --border-light:          var(--primitive-forest-200);
+    --shadow-sm:             0 4px 15px var(--primitive-shadow-forest-sm);
+    --shadow-md:             0 8px 20px var(--primitive-shadow-forest-md);
+    --card-accent-glow:      var(--primitive-glow-forest);
 }
 
 /* 테마: Deep Ocean & Cool Slate */
 [data-theme="ocean"] {
-    --primary-accent: #1e40af;
-    --primary-accent-hover: #1d4ed8;
-    --text-dark: #0f172a;
-    --text-medium: #475569;
-    --text-light: #94a3b8;
-    --text-body: #334155;
-    --bg-white: #ffffff;
-    --bg-light: #f8fafc;
-    --bg-lighter: #f1f5f9;
-    --bg-gradient-light: #e2e8f0;
-    --border-light: #e2e8f0;
-    --shadow-sm: 0 4px 15px rgba(15, 23, 42, 0.05);
-    --shadow-md: 0 8px 20px rgba(15, 23, 42, 0.1);
+    --primary-accent:        var(--primitive-blue-800);
+    --primary-accent-hover:  var(--primitive-blue-700);
+    --text-dark:             var(--primitive-slate-900);
+    --text-medium:           var(--primitive-slate-500);
+    --text-light:            var(--primitive-slate-300);
+    --text-body:             var(--primitive-slate-650);
+    --bg-white:              var(--primitive-white);
+    --bg-light:              var(--primitive-slate-50);
+    --bg-lighter:            var(--primitive-slate-100);
+    --bg-gradient-light:     var(--primitive-slate-200);
+    --border-light:          var(--primitive-slate-200);
+    --shadow-sm:             0 4px 15px var(--primitive-shadow-ocean-sm);
+    --shadow-md:             0 8px 20px var(--primitive-shadow-ocean-md);
+    --card-accent-glow:      var(--primitive-glow-ocean);
 }
 
 /* 테마: Sophisticated Charcoal & Purple */
 [data-theme="charcoal"] {
-    --primary-accent: #6366f1;
-    --primary-accent-hover: #4f46e5;
-    --text-dark: #1e1b4b;
-    --text-medium: #4b5563;
-    --text-light: #9ca3af;
-    --text-body: #374151;
-    --bg-white: #ffffff;
-    --bg-light: #f9fafb;
-    --bg-lighter: #f3f4f6;
-    --bg-gradient-light: #e5e7eb;
-    --border-light: #e5e7eb;
-    --shadow-sm: 0 4px 15px rgba(99, 102, 241, 0.06);
-    --shadow-md: 0 8px 20px rgba(99, 102, 241, 0.12);
+    --primary-accent:        var(--primitive-indigo-500);
+    --primary-accent-hover:  var(--primitive-indigo-600);
+    --text-dark:             var(--primitive-indigo-950);
+    --text-medium:           var(--primitive-gray-600);
+    --text-light:            var(--primitive-gray-400);
+    --text-body:             var(--primitive-gray-700);
+    --bg-white:              var(--primitive-white);
+    --bg-light:              var(--primitive-gray-50);
+    --bg-lighter:            var(--primitive-gray-100);
+    --bg-gradient-light:     var(--primitive-gray-200);
+    --border-light:          var(--primitive-gray-200);
+    --shadow-sm:             0 4px 15px var(--primitive-shadow-indigo-sm);
+    --shadow-md:             0 8px 20px var(--primitive-shadow-indigo-md);
+    --card-accent-glow:      var(--primitive-glow-indigo);
 }
 
 * {
@@ -87,13 +171,12 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: repeat(3, minmax(360px, 1fr));
+    grid-template-columns: repeat(3, minmax(400px, 1fr));
     gap: 20px;
-    max-width: 1280px;
+    max-width: 1520px;
     min-width: 980px;
     margin: 0 auto;
     padding: 30px 10px 60px 10px;
-    auto-rows: max-content;
     height: 1600px;
 }
 
@@ -243,21 +326,42 @@ body {
 
 .education > h3 {
     grid-column: 1 / -1;
+    margin-bottom: 0;
+}
+
+.education-items {
+    grid-column: 1 / -1;
 }
 
 .education-item {
+    margin-bottom: 14px;
+    padding-left: 10px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.education-item:hover {
+    border-left-color: var(--primary-accent);
+}
+
+.education-item:hover h4 {
+    color: var(--primary-accent);
+}
+
+.education-item:last-child {
     margin-bottom: 0;
 }
 
 .education-item h4 {
     color: var(--text-dark);
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .degree {
     font-size: 13px;
     color: var(--text-medium);
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .year {
@@ -324,7 +428,7 @@ body {
 }
 
 .card {
-    background: linear-gradient(135deg, rgba(250, 250, 250, 0.7) 0%, rgba(245, 245, 245, 0.7) 100%);
+    background: var(--card-bg);
     border-left: 4px solid var(--primary-accent);
     border-radius: 8px;
     padding: 20px;
@@ -341,7 +445,7 @@ body {
     right: 0;
     width: 100px;
     height: 100px;
-    background: rgba(212, 175, 140, 0.05);
+    background: var(--card-accent-glow);
     border-radius: 50%;
     transform: translate(30%, -30%);
 }
@@ -349,7 +453,7 @@ body {
 .card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-md);
-    background: linear-gradient(135deg, rgba(252, 252, 252, 0.85) 0%, rgba(248, 248, 248, 0.85) 100%);
+    background: var(--card-bg-hover);
 }
 
 .card-number {
@@ -387,11 +491,22 @@ body {
 .experience-item {
     margin-bottom: 30px;
     padding-bottom: 30px;
+    padding-left: 10px;
+    border-left: 3px solid transparent;
     border-bottom: 1px solid var(--bg-lighter);
+    transition: border-left-color 0.3s ease;
 }
 
 .experience-item:last-child {
     border-bottom: none;
+}
+
+.experience-item:hover {
+    border-left-color: var(--primary-accent);
+}
+
+.experience-item:hover .exp-header h3 {
+    color: var(--primary-accent);
 }
 
 .exp-header {
@@ -406,6 +521,7 @@ body {
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 4px;
+    transition: color 0.3s ease;
 }
 
 .position {
@@ -453,11 +569,22 @@ body {
 .project-item {
     margin-bottom: 30px;
     padding-bottom: 30px;
+    padding-left: 10px;
+    border-left: 3px solid transparent;
     border-bottom: 1px solid var(--bg-lighter);
+    transition: border-left-color 0.3s ease;
 }
 
 .project-item:last-child {
     border-bottom: none;
+}
+
+.project-item:hover {
+    border-left-color: var(--primary-accent);
+}
+
+.project-item:hover .project-header h3 {
+    color: var(--primary-accent);
 }
 
 .project-header {
@@ -468,10 +595,11 @@ body {
 }
 
 .project-header h3 {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--text-dark);
     margin: 0;
+    transition: color 0.3s ease;
 }
 
 .project-description {
@@ -587,7 +715,7 @@ body {
     background: var(--bg-white);
     padding: 12px 8px;
     border-radius: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px var(--primitive-overlay-15);
     z-index: 1000;
 }
 
@@ -619,7 +747,7 @@ body {
 .theme-btn.active {
     border-color: var(--text-dark);
     transform: scale(1.2);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px var(--primitive-overlay-20);
 }
 
 .theme-btn.active::after {
@@ -631,10 +759,10 @@ body {
     opacity: 0.3;
 }
 
-.theme-btn--gold      { background: #d4af8c; }
-.theme-btn--botanical { background: #3a5a40; }
-.theme-btn--ocean     { background: #1e40af; }
-.theme-btn--charcoal  { background: #6366f1; }
+.theme-btn--gold      { background: var(--primitive-gold-400); }
+.theme-btn--botanical { background: var(--primitive-forest-700); }
+.theme-btn--ocean     { background: var(--primitive-blue-800); }
+.theme-btn--charcoal  { background: var(--primitive-indigo-500); }
 
 /* ============ 애니메이션 ============ */
 @keyframes fadeIn {
