@@ -790,28 +790,88 @@ body {
 }
 
 /* ============ 프린트 스타일 ============ */
+
+/* PDF 저장 버튼 */
+.print-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--primary-accent);
+    color: var(--bg-white);
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 16px var(--primitive-overlay-20);
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+
+.print-btn:hover {
+    background: var(--primary-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--primitive-overlay-20);
+}
+
 @media print {
+    @page {
+        size: A4 landscape;
+        margin: 8mm;
+    }
+
+    html {
+        zoom: 0.6;
+    }
+
     body {
-        background: var(--bg-white);
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .theme-switcher,
+    .print-btn {
+        display: none !important;
     }
 
     .container {
-        display: block;
-        max-width: 100%;
-        padding: 0;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+        max-width: 100% !important;
+        min-width: unset !important;
+        padding: 0 !important;
+        height: auto !important;
+        margin: 0 !important;
     }
 
     .sidebar {
-        width: 100%;
-        position: relative;
-        top: 0;
-        margin-bottom: 40px;
-        box-shadow: none;
-        border-bottom: 2px solid var(--primary-accent);
+        height: auto !important;
+        min-height: unset !important;
+        box-shadow: none !important;
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        padding: 20px 15px !important;
     }
 
-    .main-content {
-        width: 100%;
-        box-shadow: none;
+    .introduction,
+    .right-content {
+        height: auto !important;
+        min-height: unset !important;
+        box-shadow: none !important;
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        padding: 20px 15px !important;
+    }
+
+    .experience-item,
+    .project-item {
+        animation: none !important;
+        opacity: 1 !important;
     }
 }
