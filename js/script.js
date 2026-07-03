@@ -4,7 +4,7 @@ let resumeData = {};
 // 데이터 로드
 async function loadData() {
     try {
-        const response = await fetch('data.json');
+        const response = await fetch('data/data.json');
         resumeData = await response.json();
         renderContent();
     } catch (error) {
