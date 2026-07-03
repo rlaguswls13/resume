@@ -43,9 +43,21 @@
     }
   ],
   "skills": {
-    "프로그래밍": ["Python", "Java", "SQL"],
-    "클라우드/DevOps": ["Kubernetes", "Docker", "AWS"],
-    "데이터": ["Elasticsearch", "빅데이터", "데이터분석"]
+    "프로그래밍": [
+      "Python",
+      "Java",
+      "SQL"
+    ],
+    "클라우드/DevOps": [
+      "Kubernetes",
+      "Docker",
+      "AWS"
+    ],
+    "데이터": [
+      "Elasticsearch",
+      "빅데이터",
+      "데이터분석"
+    ]
   },
   "education": [
     {
@@ -98,51 +110,5 @@
         "description": "개발 지식을 아낌없이 공유하고, 동료와 싱크를 맞추는 과정을 중요하게 여깁니다. 의견이 갈릴 때는 상대방의 비즈니스 논리를 먼저 존중하고, 합의점을 도출하기 위해 프로토타입 코드나 정량적 지표를 제시하며 생산적인 결론을 이끌어냅니다."
       }
     ]
-  },
-  "experience": [
-    {
-      "company": "휴머스온(주)",
-      "position": "개발2팀 / 프로",
-      "period": "2024.08 - 2026.02",
-      "responsibilities": [
-        "자사 메시징(이메일/푸시/문자/카카오비즈) 채널 통합지원 및 커스터마이징 프로젝트 수행",
-        "통합 메시징 플랫폼 개발 및 유지보수"
-      ]
-    },
-    {
-      "company": "굿모닝아이텍(주)",
-      "position": "Cloud Management Platform 유지보수팀 / 대리",
-      "period": "2021.09 - 2024.02",
-      "responsibilities": [
-        "DevOps 포털 리팩토링 및 유지보수",
-        "통합관리시스템 클라우드 마이그레이션 주도",
-        "Kubernetes 및 Docker 환경 최적화 수행"
-      ]
-    }
-  ],
-  "certifications": [
-    {
-      "title": "정보처리기사",
-      "date": "2026.05",
-      "description": "필기합격 (2026.07 실기 예정)"
-    },
-    {
-      "title": "ADsP (데이터분석 준전문가)",
-      "date": "2024.06",
-      "description": "한국데이터산업진흥원 | 자격번호: ADsP-041003058",
-      "details": ["데이터 이해, 데이터 분석 기획, 데이터 분석 역량"]
-    },
-    {
-      "title": "SQLD (SQL 개발자)",
-      "date": "2024.04",
-      "description": "한국데이터산업진흥원 | 자격번호: SQLD-052008412",
-      "details": ["데이터 모델링, SQL 기본 및 활용 능력"]
-    },
-    {
-      "title": "CKA (Certified Kubernetes Administrator)",
-      "date": "2023.04 - 2026.04",
-      "description": "CNCF | Cert ID: LF-b2czca9bdo",
-      "details": ["쿠버네티스 관리자 자격 인증"]
-    }
-  ]
+  }
 }

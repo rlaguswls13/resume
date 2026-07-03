@@ -1,12 +1,67 @@
-// data.json 로드 및 렌더링
+// 분리된 JSON 로드 및 렌더링
 let resumeData = {};
+
+let summarySections = [];
+let domainKnowledge = {};
+let refreshDockMode = function() {};
+
+let currentSummaryTab = '1';
+
+function initDockModeDetection() {
+    const stageEl = document.querySelector('.page-stage');
+
+    if (!stageEl) {
+        return;
+    }
+
+    const detectDockMode = function() {
+        const activeLayout = document.querySelector('#resumePage.active .container, #summaryPage.active .summary-wrapper, #domainPage.active .domain-wrapper');
+        if (!activeLayout) {
+            return;
+        }
+
+        const layoutRect = activeLayout.getBoundingClientRect();
+        const rightGap = window.innerWidth - layoutRect.right;
+        const shouldDock = rightGap < 120;
+
+        document.body.classList.toggle('dock-mode', shouldDock);
+    };
+
+    refreshDockMode = detectDockMode;
+
+    window.addEventListener('resize', detectDockMode);
+    stageEl.addEventListener('scroll', detectDockMode, { passive: true });
+
+    detectDockMode();
+    setTimeout(detectDockMode, 250);
+}
 
 // 데이터 로드
 async function loadData() {
     try {
-        const response = await fetch('data/data.json');
-        resumeData = await response.json();
+        const [profileResponse, projectResponse, domainResponse] = await Promise.all([
+            fetch('data/profile-data.json'),
+            fetch('data/project-data.json'),
+            fetch('data/domain-knowledge.json')
+        ]);
+
+        const [profileData, projectData, domainData] = await Promise.all([
+            profileResponse.json(),
+            projectResponse.json(),
+            domainResponse.json()
+        ]);
+
+        resumeData = {
+            ...profileData,
+            ...projectData
+        };
+
+        summarySections = projectData.summarySections || [];
+        domainKnowledge = domainData || {};
+
         renderContent();
+        renderSummaryContent();
+        renderDomainContent();
     } catch (error) {
         console.error('데이터 로드 실패:', error);
     }
@@ -257,6 +312,250 @@ function restoreSavedTheme() {
     setTheme(savedTheme);
 }
 
+function renderProjectGrid(section) {
+    const highlight = section.highlight || {};
+
+    const renderPoints = function(points) {
+        return (points || []).map(point => `
+            <li>
+                <span class="project-report-keyword">${point.keyword || ''}</span>
+                <span class="project-report-desc">${point.text || point}</span>
+            </li>
+        `).join('');
+    };
+
+    return `
+        <section class="project-report">
+            <header class="project-report-head">
+                <h2>${section.title}</h2>
+                ${highlight.value ? `
+                    <div class="project-report-highlight">
+                        <strong>${highlight.value}</strong>
+                        <span>${highlight.label || ''}</span>
+                    </div>
+                ` : ''}
+            </header>
+
+            <div class="project-report-grid">
+                <article class="project-report-card project-report-card--problem">
+                    <h3>
+                        <span class="project-report-badge">!</span>
+                        <span class="project-report-card-text">
+                            <em>문제 진단</em>
+                            ${section.problemTitle || '문제점 / 조건'}
+                        </span>
+                    </h3>
+                    <ul>
+                        ${renderPoints(section.problem)}
+                    </ul>
+                </article>
+
+                <article class="project-report-card project-report-card--solution">
+                    <h3>
+                        <span class="project-report-badge">⚙</span>
+                        <span class="project-report-card-text">
+                            <em>해결 전략</em>
+                            ${section.solutionTitle || '개선사항 / 해결방법'}
+                        </span>
+                    </h3>
+                    <ul>
+                        ${renderPoints(section.solution)}
+                    </ul>
+                </article>
+
+                <article class="project-report-card project-report-card--result">
+                    <h3>
+                        <span class="project-report-badge">✓</span>
+                        <span class="project-report-card-text">
+                            <em>핵심 성과</em>
+                            ${section.resultTitle || '결과 / 기타사항'}
+                        </span>
+                    </h3>
+                    <ul>
+                        ${renderPoints(section.result)}
+                    </ul>
+                </article>
+            </div>
+        </section>
+    `;
+}
+
+function renderDomainContent() {
+    const domainEl = document.getElementById('domainContent');
+
+    if (!domainEl) {
+        return;
+    }
+
+    if (!domainKnowledge || !domainKnowledge.categories || !domainKnowledge.categories.length) {
+        domainEl.innerHTML = '<h2 class="summary-section-title">도메인 데이터 준비 중</h2><p class="summary-description">domain-knowledge.json에 내용을 추가하면 자동 반영됩니다.</p>';
+        return;
+    }
+
+    const interests = domainKnowledge.interests || {};
+
+    domainEl.innerHTML = `
+        <div class="domain-page-panel">
+            <div class="domain-header">
+                <h2>${domainKnowledge.title || ''} <span>(${domainKnowledge.titleEn || ''})</span></h2>
+                <p class="domain-subtitle">${domainKnowledge.subtitle || ''}</p>
+            </div>
+
+            <div class="domain-grid">
+                ${domainKnowledge.categories.map(category => `
+                    <article class="domain-card">
+                        <div class="domain-card-head">
+                            <span class="domain-icon" aria-hidden="true">${category.icon || ''}</span>
+                            <div>
+                                <h3>${category.title}</h3>
+                                <p class="domain-card-title-en">${category.titleEn || ''}</p>
+                            </div>
+                        </div>
+                        <ul class="domain-item-list">
+                            ${(category.items || []).map(item => `<li>${item.kr} <span>(${item.en})</span></li>`).join('')}
+                        </ul>
+                    </article>
+                `).join('')}
+            </div>
+
+            ${interests.items && interests.items.length ? `
+                <div class="domain-interests">
+                    <div class="domain-interests-label">
+                        <span class="domain-interests-star" aria-hidden="true">★</span>
+                        <div>
+                            <strong>${interests.title || ''}</strong>
+                            <span>${interests.titleEn || ''}</span>
+                        </div>
+                    </div>
+                    <div class="domain-interests-tags">
+                        ${interests.items.map(item => `<span class="domain-interest-tag">${item.kr} <em>(${item.en})</em></span>`).join('')}
+                    </div>
+                </div>
+            ` : ''}
+        </div>
+    `;
+}
+
+function renderSummaryContent() {
+    const tabContainer = document.getElementById('summaryTabs');
+    const contentContainer = document.getElementById('summaryContent');
+
+    if (!tabContainer || !contentContainer) {
+        return;
+    }
+
+    if (!summarySections.length) {
+        tabContainer.innerHTML = '';
+        contentContainer.innerHTML = '<h2 class="summary-section-title">요약 데이터 준비 중</h2><p class="summary-description">project-data.json 또는 domain-knowledge.json에 내용을 추가하면 탭이 자동 반영됩니다.</p>';
+        return;
+    }
+
+    tabContainer.innerHTML = summarySections.map(section => `
+        <button
+            type="button"
+            class="summary-bookmark ${section.id === currentSummaryTab ? 'active' : ''}"
+            data-summary-tab="${section.id}"
+            role="tab"
+            aria-selected="${section.id === currentSummaryTab}"
+        >${section.id}</button>
+    `).join('');
+
+    const activeSection = summarySections.find(section => section.id === currentSummaryTab) || summarySections[0];
+
+    contentContainer.classList.add('summary-panel--report');
+    contentContainer.innerHTML = renderProjectGrid(activeSection);
+
+    tabContainer.querySelectorAll('.summary-bookmark').forEach(button => {
+        button.addEventListener('click', function() {
+            currentSummaryTab = this.dataset.summaryTab;
+            renderSummaryContent();
+        });
+    });
+}
+
+function initPageNavigation() {
+    const pages = [
+        document.getElementById('resumePage'),
+        document.getElementById('summaryPage'),
+        document.getElementById('domainPage')
+    ];
+    const goNextBtn = document.getElementById('goNextBtn');
+    const goPrevBtn = document.getElementById('goPrevBtn');
+    const stageEl = document.querySelector('.page-stage');
+
+    if (pages.some(page => !page) || !goNextBtn || !goPrevBtn) {
+        return;
+    }
+
+    let currentIndex = 0;
+    let isPageAnimating = false;
+
+    const togglePageButtons = function() {
+        goPrevBtn.disabled = currentIndex <= 0;
+        goNextBtn.disabled = currentIndex >= pages.length - 1;
+        refreshDockMode();
+    };
+
+    const switchPage = function(fromPage, toPage, direction) {
+        if (isPageAnimating) {
+            return;
+        }
+
+        isPageAnimating = true;
+
+        const outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
+        const inClass = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
+
+        fromPage.classList.add('animating', outClass);
+        toPage.classList.add('active', 'animating', inClass);
+
+        toPage.addEventListener('animationend', function onAnimationEnd(event) {
+            if (event.animationName !== 'slideInFromRight' && event.animationName !== 'slideInFromLeft') {
+                return;
+            }
+
+            toPage.removeEventListener('animationend', onAnimationEnd);
+
+            fromPage.classList.remove('active', 'animating', outClass);
+            toPage.classList.remove('animating', inClass);
+            isPageAnimating = false;
+            refreshDockMode();
+        });
+    };
+
+    const goToIndex = function(nextIndex, direction) {
+        if (isPageAnimating || nextIndex < 0 || nextIndex >= pages.length || nextIndex === currentIndex) {
+            return;
+        }
+
+        switchPage(pages[currentIndex], pages[nextIndex], direction);
+        currentIndex = nextIndex;
+        togglePageButtons();
+
+        if (stageEl) {
+            stageEl.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
+
+    goNextBtn.addEventListener('click', function() {
+        if (goNextBtn.disabled) {
+            return;
+        }
+
+        goToIndex(currentIndex + 1, 'next');
+    });
+
+    goPrevBtn.addEventListener('click', function() {
+        if (goPrevBtn.disabled) {
+            return;
+        }
+
+        goToIndex(currentIndex - 1, 'prev');
+    });
+
+    togglePageButtons();
+}
+
 // 경력 항목 추가
 function addExperienceItem(company, position, period, responsibilities) {
     resumeData.experience.push({
@@ -282,13 +581,15 @@ function addCertificationItem(title, date, description, details = []) {
 // 페이지 로드 시 실행
 document.addEventListener('DOMContentLoaded', function() {
     restoreSavedTheme();
+    initDockModeDetection();
     loadData();
+    initPageNavigation();
 });
 
 console.log('Portfolio Resume 페이지가 로드되었습니다.');
 console.log('사용 가능한 함수:');
 console.log('- printResume(): 이력서 인쇄');
-console.log('- toggleTheme(): 테마 전환');
+console.log('- setTheme(themeName): 테마 전환');
 console.log('- addExperienceItem(company, position, period, responsibilities)');
 console.log('- addCertificationItem(title, date, description, details)');
 

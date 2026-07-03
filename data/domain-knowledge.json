@@ -1,0 +1,69 @@
+{
+  "title": "도메인 전문성 & 비전",
+  "titleEn": "Domain Expertise & Vision",
+  "subtitle": "B2B 플랫폼 개발 및 인프라 최적화 역량 기반의 하이브리드 도메인 프로필",
+  "categories": [
+    {
+      "icon": "🖥️",
+      "title": "B2B 인프라 & CI/CD",
+      "titleEn": "Infra & CI/CD",
+      "items": [
+        { "kr": "애저 클라우드", "en": "Azure" },
+        { "kr": "컨테이너 가상화", "en": "Docker" },
+        { "kr": "배포 파이프라인", "en": "CI/CD" },
+        { "kr": "네트워크 설정", "en": "Network" },
+        { "kr": "보안성 요구조건", "en": "Security" },
+        { "kr": "종합 포털 시스템", "en": "Portal" }
+      ]
+    },
+    {
+      "icon": "✉️",
+      "title": "메시지 발송 채널",
+      "titleEn": "Messaging Channels",
+      "items": [
+        { "kr": "메일 보안설정", "en": "SPF/DKIM" },
+        { "kr": "역방향 조회", "en": "PTR Record" },
+        { "kr": "알림톡/문자 중계", "en": "SMS Agent" },
+        { "kr": "카카오 알림톡", "en": "AlimTalk" },
+        { "kr": "네트워크 격리", "en": "DMZ Config" },
+        { "kr": "다채널 통합 인증", "en": "Multi-Auth" }
+      ]
+    },
+    {
+      "icon": "🗂️",
+      "title": "자원 및 자산 관리",
+      "titleEn": "ERP & Resource Mgmt",
+      "items": [
+        { "kr": "전자 계약 관리", "en": "Contract" },
+        { "kr": "자산 수명주기", "en": "Asset Lifecycle" },
+        { "kr": "라이선스 감사", "en": "License Audit" },
+        { "kr": "비용 최적화", "en": "Cost Opt." },
+        { "kr": "계약 기반 물품", "en": "Supply" },
+        { "kr": "자원 추적 모니터링", "en": "Resource" }
+      ]
+    },
+    {
+      "icon": "🧑‍💼",
+      "title": "인사 및 업무 행정",
+      "titleEn": "HR & Business Admin",
+      "items": [
+        { "kr": "휴가 및 근무 관리", "en": "Leave" },
+        { "kr": "근태 관리 시스템", "en": "Attendance" },
+        { "kr": "스케줄링 로직", "en": "Scheduler" },
+        { "kr": "차량/배차 물류", "en": "Vehicle" },
+        { "kr": "업무 자동화", "en": "Admin Auto" },
+        { "kr": "워크플로우 설계", "en": "Workflow" }
+      ]
+    }
+  ],
+  "interests": {
+    "title": "관심 도메인",
+    "titleEn": "STRATEGIC INTERESTS",
+    "items": [
+      { "kr": "PG 및 결제 시스템", "en": "PG & Payment" },
+      { "kr": "차세대 ERP", "en": "Next-Gen ERP" },
+      { "kr": "AI 기반 HR", "en": "AI-Driven HR" },
+      { "kr": "핀테크 도메인", "en": "FinTech Domain" }
+    ]
+  }
+}

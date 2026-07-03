@@ -1,0 +1,132 @@
+{
+  "experience": [
+    {
+      "company": "휴머스온(주)",
+      "position": "개발2팀 / 프로",
+      "period": "2024.08 - 2026.02",
+      "responsibilities": [
+        "자사 메시징(이메일/푸시/문자/카카오비즈) 채널 통합지원 및 커스터마이징 프로젝트 수행",
+        "통합 메시징 플랫폼 개발 및 유지보수"
+      ]
+    },
+    {
+      "company": "굿모닝아이텍(주)",
+      "position": "Cloud Management Platform 유지보수팀 / 대리",
+      "period": "2021.09 - 2024.02",
+      "responsibilities": [
+        "DevOps 포털 리팩토링 및 유지보수",
+        "통합관리시스템 클라우드 마이그레이션 주도",
+        "Kubernetes 및 Docker 환경 최적화 수행"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "title": "정보처리기사",
+      "date": "2026.05",
+      "description": "필기합격 (2026.07 실기 예정)"
+    },
+    {
+      "title": "ADsP (데이터분석 준전문가)",
+      "date": "2024.06",
+      "description": "한국데이터산업진흥원 | 자격번호: ADsP-041003058",
+      "details": [
+        "데이터 이해, 데이터 분석 기획, 데이터 분석 역량"
+      ]
+    },
+    {
+      "title": "SQLD (SQL 개발자)",
+      "date": "2024.04",
+      "description": "한국데이터산업진흥원 | 자격번호: SQLD-052008412",
+      "details": [
+        "데이터 모델링, SQL 기본 및 활용 능력"
+      ]
+    },
+    {
+      "title": "CKA (Certified Kubernetes Administrator)",
+      "date": "2023.04 - 2026.04",
+      "description": "CNCF | Cert ID: LF-b2czca9bdo",
+      "details": [
+        "쿠버네티스 관리자 자격 인증"
+      ]
+    }
+  ],
+  "summarySections": [
+    {
+      "id": "1",
+      "title": "사내 물리 서버 → Azure 클라우드 전환",
+      "highlight": { "value": "-99%", "label": "초기 구축비용 절감" },
+      "problemTitle": "고비용 · 비효율 운영 구조",
+      "solutionTitle": "컨테이너 통합 & 자동화",
+      "resultTitle": "비용 절감 & 운영 효율화",
+      "problem": [
+        { "keyword": "고비용 구조", "text": "신규 물리 서버 도입 시 대당 1,000만원 이상의 초기 비용 부담" },
+        { "keyword": "조직 비효율", "text": "서버팀/개발팀/운영팀이 분리 운영되어 협업 비효율 발생" },
+        { "keyword": "모니터링 부재", "text": "리소스 사용량과 로그를 체계적으로 모니터링할 체계 부재" }
+      ],
+      "solution": [
+        { "keyword": "컨테이너 통합", "text": "1대의 Azure VM에 docker-compose 기반 1:N 컨테이너 구조 설계 (WAS·DB·Nginx 프록시·Let's Encrypt SSL 자동 갱신)" },
+        { "keyword": "접근 권한 강화", "text": "계정 세분화 및 AppArmor 적용으로 컨테이너 접근 권한 강화" },
+        { "keyword": "방화벽 정책 수립", "text": "RSA Public/Private Key 및 사내망 고정 IP 기반으로 개발 영역 방화벽 정책 수립" },
+        { "keyword": "통합 모니터링", "text": "컨테이너별 시스템 로깅과 Azure 리소스 사용량 모니터링을 통합 관리" },
+        { "keyword": "백업 자동화", "text": "DB 스냅샷과 소스/업로드 파일 백업을 코드화하여 매일/주간/장기 아카이브로 스케줄링" }
+      ],
+      "result": [
+        { "keyword": "비용 대폭 절감", "text": "신규 물리서버 대비 월 8만원대 세팅으로 초기 구축비용 대폭 절감" },
+        { "keyword": "인력 운영 효율화", "text": "개발팀 중심 세팅 + 운영팀 협업 구조로 인력 운영 효율화" },
+        { "keyword": "장애 대응력 향상", "text": "리소스 사용량과 로그 관리 체계를 표준화하여 장애 대응력 향상" }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "대규모 트래픽 처리 아키텍처 개선",
+      "highlight": { "value": "800K/hr", "label": "시간당 처리량" },
+      "problemTitle": "확장 한계 & 채널 병목",
+      "solutionTitle": "Sub-Channel 분산 처리",
+      "resultTitle": "처리량 4배 확장",
+      "problem": [
+        { "keyword": "성능 저하 위험", "text": "Spring Integration 기반 구조에서 트래픽 증가 시 성능 저하 위험 증가" },
+        { "keyword": "불균등 분산", "text": "모듈 수를 단순히 늘려도 부하가 고르게 분담되지 않음" },
+        { "keyword": "채널 병목", "text": "모듈 내 특정 채널에서 병목이 발생해도 해소할 수단이 없음" }
+      ],
+      "solution": [
+        { "keyword": "Sub-Channel 구독", "text": "기존 기술 스택은 유지한 채, queue 병목 구간을 분석해 sub-channel 구독 방식으로 전환" },
+        { "keyword": "유형별 Queue 분리", "text": "대량/실시간/긴급 트래픽 유형별로 JVM 내부에서 별도 queue에 적재 후 MQ 서버로 분산 처리" },
+        { "keyword": "동적 작업 배치", "text": "분담 테이블의 활성 상태와 스케줄 건수를 기준으로 신규 작업을 동적으로 배치" },
+        { "keyword": "중복 실행 차단", "text": "초기 스케줄은 모듈 ID 조건 검증으로 중복 실행을 차단" },
+        { "keyword": "Failover 재할당", "text": "장시간 미등록 스케줄은 다른 모듈 ID로 강제 재할당해 failover 및 유실을 방지" }
+      ],
+      "result": [
+        { "keyword": "처리량 4배 확장", "text": "동일 4대 모듈 기준 시간당 20만건 → 80만건으로 처리량 4배 확장" },
+        { "keyword": "성능 저하 해소", "text": "누적 트래픽 증가에 따른 성능 저하 문제 해소" },
+        { "keyword": "대용량 시나리오 대응", "text": "건당 500KB~1MB, sub-channel 3종 타입, 5분 간격 10만건 유입 시나리오까지 안정적으로 대응" }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "WebFlux 기반 API 성능 최적화 및 UX 개선",
+      "highlight": { "value": "100%", "label": "응답 경험 보장" },
+      "problemTitle": "무한 대기 & 정합성 리스크",
+      "solutionTitle": "트랜잭션 세분화 & Time Limit",
+      "resultTitle": "100% 응답 경험 달성",
+      "problem": [
+        { "keyword": "대기시간 전가", "text": "외부 API(메일/알림) 호출 지연 시 대기시간 전체가 사용자에게 그대로 전가되는 구조" },
+        { "keyword": "무한 대기 위험", "text": "트랜잭션 병목 구간별 제한시간 정책이 없어 무한 대기 위험 존재" },
+        { "keyword": "정합성 기준 부재", "text": "요청 단계별 데이터 정합성(rollback) 기준이 명확하지 않음" }
+      ],
+      "solution": [
+        { "keyword": "트랜잭션 세분화", "text": "요청접수 → 비즈니스 로직(본문 생성) → 외부 API 호출 → 결과 적재 단계를 MSA 성향으로 개별 트랜잭션 분리" },
+        { "keyword": "정합성 확보", "text": "요청접수 단계에서 400/500 응답을 즉시 처리하고, 트랜잭션별 rollback 기준을 반영해 정합성 확보" },
+        { "keyword": "단계별 Time Limit", "text": "비즈니스 로직 500ms, 데이터 저장 2s, 외부 API 호출/저장 3s, 결과 적재 1s 등 단계별 Time Limit 설정" },
+        { "keyword": "202 Accept 응답", "text": "제한시간 초과 시 즉시 202 Accept로 응답하고, 이후 단계별 결과를 업데이트해 별도 결과 조회 API로 확인 가능" },
+        { "keyword": "로그 추적성 확보", "text": "MQ 서버 및 외부 API 호출 응답에 대한 로그 프로세스를 별도로 운영해 장애 추적성 확보" }
+      ],
+      "result": [
+        { "keyword": "대기시간 미전가", "text": "병목/레이턴시가 발생해도 대기시간을 사용자에게 전가하지 않는 구조로 개선" },
+        { "keyword": "95% 즉시 확인", "text": "95% 이상은 유사 비동기 처리로 최종 결과를 즉시 확인 가능" },
+        { "keyword": "결과 조회 보완", "text": "나머지 5% 미만의 202 Accept 응답도 별도 결과 확인 API로 보완" },
+        { "keyword": "100% 응답 경험", "text": "결과적으로 시간당 10만건 처리 기준 100% 응답 경험 제공" }
+      ]
+    }
+  ]
+}
