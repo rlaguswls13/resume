@@ -316,10 +316,14 @@ function renderProjectGrid(section) {
     const highlight = section.highlight || {};
 
     const renderPoints = function(points) {
-        return (points || []).map(point => `
-            <li>
-                <span class="project-report-keyword">${point.keyword || ''}</span>
-                <span class="project-report-desc">${point.text || point}</span>
+        const list = points || [];
+        return list.map((point, index) => `
+            <li class="${index === list.length - 1 ? 'project-report-item--final' : ''}">
+                <span class="project-report-step" aria-hidden="true">${index + 1}</span>
+                <span class="project-report-item-content">
+                    <span class="project-report-keyword">${point.keyword || ''}</span>
+                    <span class="project-report-desc">${point.text || point}</span>
+                </span>
             </li>
         `).join('');
     };

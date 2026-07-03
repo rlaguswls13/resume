@@ -8,10 +8,10 @@
       "title": "B2B 인프라 & CI/CD",
       "titleEn": "Infra & CI/CD",
       "items": [
-        { "kr": "애저 클라우드", "en": "Azure" },
-        { "kr": "컨테이너 가상화", "en": "Docker" },
-        { "kr": "배포 파이프라인", "en": "CI/CD" },
-        { "kr": "네트워크 설정", "en": "Network" },
+        { "kr": "애저 클라우드", "en": "Azure, AWS" },
+        { "kr": "컨테이너 가상화", "en": "Docker/Podman" },
+        { "kr": "배포 파이프라인", "en": "Jenkins, K8s" },
+        { "kr": "네트워크 설정", "en": "Network L7/L4" },
         { "kr": "보안성 요구조건", "en": "Security" },
         { "kr": "종합 포털 시스템", "en": "Portal" }
       ]
@@ -21,10 +21,10 @@
       "title": "메시지 발송 채널",
       "titleEn": "Messaging Channels",
       "items": [
-        { "kr": "메일 보안설정", "en": "SPF/DKIM" },
-        { "kr": "역방향 조회", "en": "PTR Record" },
-        { "kr": "알림톡/문자 중계", "en": "SMS Agent" },
-        { "kr": "카카오 알림톡", "en": "AlimTalk" },
+        { "kr": "메일 보안설정", "en": "SPF/PTR/DKIM/DMARC" },
+        { "kr": "메일 통신", "en": "SMTP, Relay-on" },
+        { "kr": "PUSH 메세지", "en": "APNS, FCM 통신" },
+        { "kr": "카카오 알림톡", "en": "AlimTalk, FrendsTalk" },
         { "kr": "네트워크 격리", "en": "DMZ Config" },
         { "kr": "다채널 통합 인증", "en": "Multi-Auth" }
       ]
@@ -37,7 +37,6 @@
         { "kr": "전자 계약 관리", "en": "Contract" },
         { "kr": "자산 수명주기", "en": "Asset Lifecycle" },
         { "kr": "라이선스 감사", "en": "License Audit" },
-        { "kr": "비용 최적화", "en": "Cost Opt." },
         { "kr": "계약 기반 물품", "en": "Supply" },
         { "kr": "자원 추적 모니터링", "en": "Resource" }
       ]
@@ -51,8 +50,7 @@
         { "kr": "근태 관리 시스템", "en": "Attendance" },
         { "kr": "스케줄링 로직", "en": "Scheduler" },
         { "kr": "차량/배차 물류", "en": "Vehicle" },
-        { "kr": "업무 자동화", "en": "Admin Auto" },
-        { "kr": "워크플로우 설계", "en": "Workflow" }
+        { "kr": "업무 자동화", "en": "Admin Auto" }
       ]
     }
   ],

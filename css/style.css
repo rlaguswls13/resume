@@ -615,13 +615,71 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }
 
 .project-report-card li {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.project-report-card li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 20px;
+    bottom: -14px;
+    width: 2px;
+    background: var(--border-light);
+    opacity: 0.6;
+}
+
+.project-report-step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--bg-white);
+    border: 2px solid var(--text-light);
+    color: var(--text-light);
+    font-size: 10px;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.project-report-card--solution .project-report-step {
+    border-color: var(--primary-accent);
+    color: var(--primary-accent);
+}
+
+.project-report-card--solution li:not(:last-child)::after {
+    background: var(--primary-accent);
+    opacity: 0.5;
+}
+
+.project-report-card--result .project-report-step {
+    border-color: var(--text-dark);
+    color: var(--text-dark);
+}
+
+.project-report-card--result li:not(:last-child)::after {
+    background: var(--text-dark);
+    opacity: 0.4;
+}
+
+.project-report-item-content {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    flex: 1;
+    min-width: 0;
 }
 
 .project-report-keyword {
@@ -652,6 +710,22 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     font-size: 13.5px;
     line-height: 1.55;
     color: var(--text-medium);
+}
+
+.project-report-card--result .project-report-item--final .project-report-step {
+    background: var(--text-dark);
+    color: var(--bg-white);
+}
+
+.project-report-card--result .project-report-item--final .project-report-keyword {
+    background: var(--text-dark);
+    color: var(--bg-white);
+    border-color: var(--text-dark);
+}
+
+.project-report-card--result .project-report-item--final .project-report-desc {
+    color: var(--text-dark);
+    font-weight: 700;
 }
 
 /* ============ 도메인 지식 페이지 ============ */
