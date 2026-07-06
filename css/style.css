@@ -461,6 +461,14 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     z-index: 3;
 }
 
+.summary-panel-item {
+    display: none;
+}
+
+.summary-panel-item.active {
+    display: block;
+}
+
 .summary-panel {
     background: var(--bg-white);
     border: 1px solid var(--border-light);
@@ -1690,7 +1698,10 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
         zoom: 0.6;
     }
 
+    html,
     body {
+        height: auto !important;
+        overflow: visible !important;
         background: white !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
@@ -1699,8 +1710,40 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     .theme-switcher,
     .print-btn,
     .page-nav-btn,
-    .summary-back-btn {
+    .summary-back-btn,
+    .summary-bookmarks {
         display: none !important;
+    }
+
+    /* 화면 전환용 페이지 스테이지를 인쇄 시 일반 문서 흐름으로 전환 */
+    .page-stage {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* 3개 뷰 페이지(이력서/요약/도메인)를 모두 표시하고, 페이지마다 새 용지에 출력 */
+    .view-page {
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        transform: none !important;
+        animation: none !important;
+        page-break-after: always;
+        break-after: page;
+        page-break-inside: avoid;
+    }
+
+    .view-page:last-child {
+        page-break-after: auto;
+        break-after: auto;
+    }
+
+    #summaryPage,
+    #domainPage {
+        display: block !important;
     }
 
     .container {
@@ -1709,6 +1752,7 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
         gap: 10px !important;
         max-width: 100% !important;
         min-width: unset !important;
+        width: 100% !important;
         padding: 0 !important;
         height: auto !important;
         margin: 0 !important;
@@ -1720,7 +1764,76 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
         box-shadow: none !important;
         border: 1px solid var(--border-light);
         border-radius: 8px;
-        padding: 20px 15px !important;
+        padding: 16px 15px !important;
+        line-height: 1.3 !important;
+    }
+
+    /* 프로필 영역이 세로로 너무 길어져 2페이지로 넘어가는 것을 방지하기 위한 여백/크기 축소 */
+    .profile {
+        margin-bottom: 14px !important;
+        padding-bottom: 14px !important;
+    }
+
+    .profile-image {
+        margin-bottom: 10px !important;
+    }
+
+    .profile-image img {
+        width: 70px !important;
+        height: 70px !important;
+        border-width: 2px !important;
+    }
+
+    .name {
+        font-size: 18px !important;
+        margin-bottom: 3px !important;
+    }
+
+    .sidebar h3 {
+        margin-bottom: 8px !important;
+    }
+
+    .sidebar h4 {
+        margin-bottom: 5px !important;
+    }
+
+    .contact {
+        margin-bottom: 12px !important;
+    }
+
+    .contact li {
+        margin-bottom: 4px !important;
+    }
+
+    .skills {
+        margin-bottom: 12px !important;
+    }
+
+    .skill-category {
+        margin-bottom: 6px !important;
+    }
+
+    .skill-tags {
+        gap: 5px !important;
+    }
+
+    .tag {
+        padding: 3px 9px !important;
+    }
+
+    .education {
+        gap: 8px !important;
+        padding-top: 16px !important;
+    }
+
+    .education-items {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 4px 12px !important;
+    }
+
+    .education-item {
+        margin-bottom: 0 !important;
     }
 
     .introduction,
@@ -1730,7 +1843,132 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
         box-shadow: none !important;
         border: 1px solid var(--border-light);
         border-radius: 8px;
-        padding: 20px 15px !important;
+        padding: 16px 15px !important;
+    }
+
+    .introduction h2,
+    .right-content h2 {
+        margin-bottom: 10px !important;
+        padding-bottom: 8px !important;
+    }
+
+    /* 자기소개 카드 영역 압축 */
+    .intro-subtitle {
+        margin-bottom: 12px !important;
+    }
+
+    .cards-grid {
+        gap: 8px !important;
+    }
+
+    .card {
+        padding: 10px 12px !important;
+    }
+
+    .card-number {
+        font-size: 16px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .card h3 {
+        font-size: 12.5px !important;
+        margin-bottom: 4px !important;
+        line-height: 1.25 !important;
+    }
+
+    .card p {
+        font-size: 11px !important;
+        line-height: 1.3 !important;
+    }
+
+    /* 경력/자격증 영역 압축 */
+    .experience {
+        margin-bottom: 16px !important;
+    }
+
+    .experience-item,
+    .project-item {
+        margin-bottom: 8px !important;
+        padding-bottom: 8px !important;
+    }
+
+    .projects {
+        margin-bottom: 10px !important;
+    }
+
+    .exp-header,
+    .project-header {
+        margin-bottom: 5px !important;
+    }
+
+    .exp-header h3 {
+        font-size: 13.5px !important;
+    }
+
+    .project-header h3 {
+        font-size: 12.5px !important;
+    }
+
+    .project-description {
+        margin-bottom: 6px !important;
+        font-size: 11.5px !important;
+    }
+
+    .responsibilities li,
+    .project-details li {
+        margin-bottom: 4px !important;
+        font-size: 11.5px !important;
+        line-height: 1.35 !important;
+    }
+
+    /* 요약/도메인 페이지 폭을 A4 폭에 맞게 축소 */
+    .summary-wrapper,
+    .domain-wrapper {
+        max-width: 100% !important;
+        min-width: unset !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .summary-panel,
+    .domain-page-panel {
+        box-shadow: none !important;
+        border-radius: 8px;
+    }
+
+    .domain-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* 업무이력(요약 탭) 카드는 인쇄 시 항상 3단으로 표시 */
+    .project-report-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 16px !important;
+    }
+
+    /* 카드/항목이 페이지 중간에서 잘리지 않도록 */
+    .card,
+    .experience-item,
+    .education-item,
+    .domain-card,
+    .project-report-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* 업무이력(요약 탭) 항목을 각각 개별 페이지로 출력 */
+    .summary-panel-item {
+        display: block !important;
+        page-break-after: always;
+        break-after: page;
+        page-break-inside: avoid;
+    }
+
+    .summary-panel-item:last-child {
+        page-break-after: auto;
+        break-after: auto;
     }
 
     .experience-item,

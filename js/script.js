@@ -285,6 +285,12 @@ function initInteractiveFeatures() {
 
 // 인쇄 기능
 function printResume() {
+    // 인쇄 시 페이지 스테이지가 스크롤된 상태로 잘려 출력되는 것을 방지
+    const stageEl = document.querySelector('.page-stage');
+    if (stageEl) {
+        stageEl.scrollTop = 0;
+    }
+    window.scrollTo(0, 0);
     window.print();
 }
 
@@ -464,10 +470,13 @@ function renderSummaryContent() {
         >${section.id}</button>
     `).join('');
 
-    const activeSection = summarySections.find(section => section.id === currentSummaryTab) || summarySections[0];
-
     contentContainer.classList.add('summary-panel--report');
-    contentContainer.innerHTML = renderProjectGrid(activeSection);
+    contentContainer.innerHTML = summarySections.map(section => `
+        <div
+            class="summary-panel-item ${section.id === currentSummaryTab ? 'active' : ''}"
+            data-summary-tab="${section.id}"
+        >${renderProjectGrid(section)}</div>
+    `).join('');
 
     tabContainer.querySelectorAll('.summary-bookmark').forEach(button => {
         button.addEventListener('click', function() {

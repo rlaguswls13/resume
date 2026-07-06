@@ -44,9 +44,9 @@
   ],
   "skills": {
     "프로그래밍": [
-      "Python",
       "Java",
-      "SQL"
+      "SQL",
+      "Python"
     ],
     "클라우드/DevOps": [
       "Kubernetes",
