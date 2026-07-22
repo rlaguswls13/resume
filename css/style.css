@@ -527,7 +527,7 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
 
 .project-report-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
 }
 
@@ -1413,25 +1413,65 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
 
 /* ============ 반응형 ============ */
 
-/* 1024px 이하: 2단 -> 1단으로 변경 */
+/* 프로젝트 카드는 축소하지 않고 화면 폭에 따라 3단 -> 2단 -> 1단으로 재배치 */
+@media (max-width: 1240px) {
+    .summary-wrapper,
+    .domain-wrapper {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .project-report-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 1024px) {
     :root {
         --floating-line-x: 44px;
     }
 
+    .page-stage {
+        overflow-x: hidden;
+    }
+
+    .container,
+    .summary-wrapper,
+    .domain-wrapper {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
     .container {
         grid-template-columns: 1fr;
         gap: 20px;
-        min-width: unset;
         height: auto;
+    }
+
+    #summaryPage,
+    #domainPage {
+        align-items: flex-start;
     }
 
     .sidebar,
     .introduction,
     .right-content {
+        width: 100%;
+        min-width: 0;
         height: auto;
         position: relative;
         top: 0;
+    }
+
+    .summary-panel,
+    .project-report,
+    .project-report-grid,
+    .project-report-card,
+    .domain-page-panel,
+    .domain-grid,
+    .domain-card {
+        min-width: 0;
     }
 
     .page-nav-btn {
@@ -1459,14 +1499,15 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
 @media (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;
-        padding: 20px 15px 40px 15px;
+        gap: 14px;
+        padding: 16px 12px 72px;
     }
 
     .sidebar,
     .introduction,
     .right-content {
-        padding: 20px;
-        margin-bottom: 20px;
+        padding: 20px 16px;
+        margin-bottom: 0;
     }
 
     .cards-grid {
@@ -1509,11 +1550,25 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     }
 
     .summary-wrapper {
-        padding: 24px 14px 60px 14px;
+        padding: 20px 12px 72px;
+    }
+
+    .summary-bookmarks {
+        flex-wrap: nowrap;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 4px 4px 0;
+        scrollbar-width: thin;
+    }
+
+    .summary-bookmark {
+        flex: 0 0 auto;
+        padding-right: 16px;
+        padding-left: 16px;
     }
 
     .summary-panel {
-        padding: 18px;
+        padding: 18px 14px;
     }
 
     .summary-section-title {
@@ -1530,6 +1585,8 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
 
     .project-report-head h2 {
         font-size: 22px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
     }
 
     .project-report-highlight {
@@ -1542,11 +1599,11 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     }
 
     .domain-wrapper {
-        padding: 24px 14px 60px 14px;
+        padding: 20px 12px 72px;
     }
 
     .domain-page-panel {
-        padding: 20px;
+        padding: 18px 14px;
     }
 
     .domain-header h2 {
@@ -1564,6 +1621,15 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     .domain-interests {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .contact li,
+    .card,
+    .experience-item,
+    .project-item,
+    .domain-card,
+    .project-report-card {
+        overflow-wrap: anywhere;
     }
 }
 
