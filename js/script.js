@@ -267,20 +267,8 @@ function initInteractiveFeatures() {
         });
     });
 
-    // 항목 호버 효과
-    const items = document.querySelectorAll('.experience-item, .project-item');
-    items.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.background = '#f9f9f9';
-            this.style.borderRadius = '8px';
-            this.style.padding = '15px';
-            this.style.transition = 'all 0.3s ease';
-        });
-        item.addEventListener('mouseleave', function() {
-            this.style.background = 'transparent';
-            this.style.padding = '0';
-        });
-    });
+    // 경력/자격증 항목의 호버 표현은 CSS에서 관리한다.
+    // 인라인 padding 변경은 타임라인 마커와 제목을 겹치게 하므로 사용하지 않는다.
 }
 
 // 인쇄 기능

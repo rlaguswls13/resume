@@ -1,5 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap');
+
 /* ============ Primitive Tokens (Layer 1 — raw values) ============ */
 :root {
+    /* Typography */
+    --font-sans:                 'Inter', 'Noto Sans KR', 'Segoe UI', sans-serif;
+    --font-mono:                 'JetBrains Mono', 'Consolas', monospace;
+    --font-size-2xs:             10px;
+    --font-size-xs:              11px;
+    --font-size-sm:              12px;
+    --font-size-body:            13px;
+    --font-size-body-lg:         14px;
+    --font-size-subtitle:        15px;
+    --font-size-section:         20px;
+    --font-size-title:           24px;
+    --font-size-display:         28px;
+
     /* White */
     --primitive-white:          #ffffff;
 
@@ -78,26 +93,26 @@
 
 /* ============ Semantic Tokens (Layer 2 — purpose-based) ============ */
 
-/* 기본 테마: Warm Gold */
+/* 기본 테마: Muted Slate Blue */
 :root {
-    --primary-accent:        var(--primitive-gold-400);
-    --primary-accent-hover:  var(--primitive-gold-500);
-    --text-dark:             var(--primitive-neutral-900);
-    --text-medium:           var(--primitive-neutral-500);
-    --text-light:            var(--primitive-neutral-400);
-    --text-body:             var(--primitive-neutral-850);
+    --primary-accent:        #647da8;
+    --primary-accent-hover:  #526b94;
+    --text-dark:             #263449;
+    --text-medium:           #5d6a7d;
+    --text-light:            #8793a5;
+    --text-body:             #3d4a5e;
     --bg-white:              var(--primitive-white);
-    --bg-light:              var(--primitive-neutral-100);
-    --bg-lighter:            var(--primitive-neutral-150);
-    --bg-gradient-light:     var(--primitive-neutral-200);
-    --border-light:          var(--primitive-neutral-300);
-    --shadow-sm:             0 4px 15px var(--primitive-shadow-neutral-sm);
-    --shadow-md:             0 8px 20px var(--primitive-shadow-neutral-md);
-    --card-bg:               var(--primitive-card-bg-default);
-    --card-bg-hover:         var(--primitive-card-bg-hover-default);
-    --card-accent-glow:      var(--primitive-glow-gold);
-    --accent-tint-strong:    rgba(212, 175, 140, 0.22);
-    --accent-tint-border:    rgba(212, 175, 140, 0.55);
+    --bg-light:              #f5f7fb;
+    --bg-lighter:            #edf1f7;
+    --bg-gradient-light:     #e7ecf4;
+    --border-light:          #dbe2ec;
+    --shadow-sm:             0 4px 15px rgba(52, 73, 107, 0.08);
+    --shadow-md:             0 8px 22px rgba(52, 73, 107, 0.13);
+    --card-bg:               linear-gradient(135deg, rgba(250, 252, 255, 0.94), rgba(242, 246, 251, 0.94));
+    --card-bg-hover:         linear-gradient(135deg, #ffffff, #f4f7fb);
+    --card-accent-glow:      rgba(100, 125, 168, 0.08);
+    --accent-tint-strong:    rgba(100, 125, 168, 0.14);
+    --accent-tint-border:    rgba(100, 125, 168, 0.42);
     --floating-line-x:       58px;
 }
 
@@ -173,8 +188,11 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-gradient-light) 100%);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-body-lg);
+    background:
+        radial-gradient(circle at 8% 4%, var(--accent-tint-strong) 0, transparent 28rem),
+        linear-gradient(180deg, var(--bg-light) 0%, var(--bg-white) 52%, var(--bg-light) 100%);
     color: var(--text-body);
     line-height: 1.6;
     height: 100%;
@@ -280,7 +298,8 @@ body {
     min-width: 1240px;
     margin: 0 auto;
     padding: 30px 10px 60px 10px;
-    height: 1600px;
+    min-height: 1600px;
+    height: auto;
 }
 
 /* ============ 페이지 이동 버튼 ============ */
@@ -971,7 +990,8 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     padding: 40px 25px;
     padding-bottom: 50px;
     box-shadow: var(--shadow-sm);
-    height: 1300px;
+    min-height: 1300px;
+    height: auto;
 }
 
 /* 프로필 */
@@ -1161,7 +1181,8 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     padding: 40px 25px;
     padding-bottom: 50px;
     box-shadow: var(--shadow-sm);
-    height: 1300px;
+    min-height: 1300px;
+    height: auto;
 }
 
 .main-content {
@@ -1243,7 +1264,7 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     font-weight: 700;
     color: var(--primary-accent);
     margin-bottom: 15px;
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font-mono);
 }
 
 .card h3 {
@@ -1309,15 +1330,15 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     font-size: 12px;
     color: var(--primary-accent);
     font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .date {
     font-size: 12px;
     color: var(--text-light);
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
     margin-left: 20px;
 }
 
@@ -1411,10 +1432,324 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     font-weight: bold;
 }
 
+/* ============ TECH LOG inspired visual system ============ */
+.sidebar,
+.introduction,
+.right-content,
+.summary-panel,
+.domain-page-panel {
+    border: 1px solid var(--border-light);
+    box-shadow: 0 12px 34px var(--primitive-shadow-neutral-sm);
+}
+
+.sidebar,
+.introduction,
+.right-content {
+    position: relative;
+    overflow: visible;
+    border-radius: 16px;
+}
+
+.sidebar::before,
+.introduction::before,
+.right-content::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-accent), transparent 72%);
+}
+
+.name,
+.summary-section-title,
+.project-report-head h2,
+.domain-header h2 {
+    font-weight: 800;
+    letter-spacing: -0.035em;
+}
+
+.job-title,
+.sidebar h3,
+.card-number,
+.project-report-card-text em,
+.project-report-keyword,
+.domain-card-title-en,
+.theme-label {
+    font-family: var(--font-mono);
+}
+
+/* Centralized type scale */
+.theme-label,
+.project-report-step {
+    font-size: var(--font-size-2xs);
+}
+
+.project-report-card-text em,
+.tag {
+    font-size: var(--font-size-xs);
+}
+
+.job-title,
+.date,
+.year,
+.domain-card-title-en,
+.domain-interest-tag,
+.project-report-keyword,
+.summary-bookmark {
+    font-size: var(--font-size-sm);
+}
+
+.contact li,
+.sidebar h4,
+.degree,
+.intro-subtitle,
+.card p,
+.responsibilities li,
+.project-description,
+.project-details li,
+.domain-item-list li,
+.project-report-desc {
+    font-size: var(--font-size-body);
+}
+
+.sidebar h3,
+.card h3,
+.project-header h3,
+.summary-back-btn {
+    font-size: var(--font-size-body-lg);
+}
+
+.exp-header h3,
+.domain-card-head h3 {
+    font-size: var(--font-size-subtitle);
+}
+
+.introduction h2,
+.right-content h2 {
+    font-size: var(--font-size-section);
+}
+
+.name,
+.domain-header h2 {
+    font-size: var(--font-size-title);
+}
+
+.summary-section-title,
+.project-report-head h2 {
+    font-size: var(--font-size-display);
+}
+
+.profile-image img {
+    box-shadow: 0 0 0 8px var(--accent-tint-strong);
+}
+
+.introduction h2,
+.right-content h2 {
+    display: block;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 20px;
+    letter-spacing: -0.025em;
+}
+
+.introduction h2::after,
+.right-content h2::after {
+    content: '';
+    display: block;
+    width: 42px;
+    height: 3px;
+    margin-top: 14px;
+    margin-bottom: -16px;
+    border-radius: 999px;
+    background: var(--primary-accent);
+}
+
+.intro-subtitle {
+    color: var(--text-medium);
+    line-height: 1.7;
+}
+
+.exp-header > div,
+.project-header > h3,
+.card h3,
+.card p,
+.project-report-item-content,
+.domain-card-head > div {
+    min-width: 0;
+}
+
+.card h3,
+.card p,
+.exp-header h3,
+.position,
+.date,
+.project-header h3,
+.project-report-keyword,
+.project-report-desc,
+.domain-card h3,
+.domain-item-list li {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.card,
+.domain-card,
+.project-report-card {
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    background: var(--bg-white);
+    box-shadow: 0 5px 18px var(--primitive-shadow-neutral-sm);
+}
+
+.card {
+    border-top: 3px solid var(--primary-accent);
+    border-left-width: 1px;
+}
+
+.card-number {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    background: var(--accent-tint-strong);
+    border: 1px solid var(--accent-tint-border);
+    border-radius: 7px;
+    padding: 4px 9px;
+}
+
+.card:hover,
+.domain-card:hover,
+.project-report-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-tint-border);
+    box-shadow: 0 14px 30px var(--primitive-shadow-neutral-md);
+}
+
+.tag,
+.domain-interest-tag,
+.project-report-keyword {
+    border-radius: 8px;
+}
+
+.tag {
+    background: var(--bg-white);
+    font-family: var(--font-mono);
+}
+
+.experience-item,
+.project-item,
+.education-item {
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid var(--border-light);
+}
+
+.experience-item::before,
+.project-item::before,
+.education-item::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: -6px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--primary-accent);
+    border-radius: 50%;
+    background: var(--bg-white);
+}
+
+.experience-item:hover,
+.project-item:hover,
+.education-item:hover {
+    border-left-color: var(--primary-accent);
+}
+
+.summary-bookmarks {
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 0;
+}
+
+.summary-bookmark {
+    border: 1px solid var(--border-light);
+    border-radius: 999px;
+    background: var(--bg-white);
+    padding: 9px 16px;
+    box-shadow: none;
+    transform: none;
+    font-family: var(--font-mono);
+}
+
+.summary-bookmark:hover {
+    border-color: var(--primary-accent);
+    background: var(--accent-tint-strong);
+    color: var(--primary-accent);
+    transform: translateY(-2px);
+}
+
+.summary-bookmark.active {
+    border-color: var(--primary-accent);
+    background: var(--primary-accent);
+    color: var(--bg-white);
+    box-shadow: 0 6px 16px var(--accent-tint-border);
+    transform: none;
+}
+
+.summary-panel,
+.domain-page-panel {
+    border-radius: 18px;
+    background: color-mix(in srgb, var(--bg-white) 94%, var(--primary-accent) 6%);
+}
+
+.project-report-card--solution {
+    background: color-mix(in srgb, var(--bg-white) 88%, var(--primary-accent) 12%);
+}
+
+.domain-card-head {
+    align-items: flex-start;
+}
+
+.domain-icon {
+    border: 1px solid var(--border-light);
+    color: var(--primary-accent);
+}
+
+.page-nav-btn,
+.theme-switcher {
+    border: 1px solid var(--border-light);
+}
+
+.page-nav-btn:focus-visible,
+.theme-btn:focus-visible,
+.summary-bookmark:focus-visible,
+.contact a:focus-visible {
+    outline: 3px solid var(--accent-tint-border);
+    outline-offset: 3px;
+}
+
 /* ============ 반응형 ============ */
 
 /* 프로젝트 카드는 축소하지 않고 화면 폭에 따라 3단 -> 2단 -> 1단으로 재배치 */
 @media (max-width: 1240px) {
+    .container {
+        max-width: 100%;
+        min-width: 0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        height: auto;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .sidebar,
+    .introduction,
+    .right-content {
+        min-height: 0;
+        height: auto;
+    }
+
+    .right-content {
+        grid-column: 1 / -1;
+    }
+
     .summary-wrapper,
     .domain-wrapper {
         max-width: 100%;
@@ -1692,7 +2027,7 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     opacity: 0.3;
 }
 
-.theme-btn--gold      { background: var(--primitive-gold-400); }
+.theme-btn--gold      { background: #647da8; }
 .theme-btn--botanical { background: var(--primitive-forest-700); }
 .theme-btn--ocean     { background: var(--primitive-blue-800); }
 .theme-btn--charcoal  { background: var(--primitive-indigo-500); }
@@ -1755,6 +2090,22 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
 }
 
 @media print {
+    .sidebar::before,
+    .introduction::before,
+    .right-content::before,
+    .introduction h2::after,
+    .right-content h2::after {
+        display: none !important;
+    }
+
+    .card,
+    .domain-card,
+    .project-report-card {
+        background: white !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+
     @page {
         size: A4 landscape;
         margin: 8mm;
