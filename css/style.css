@@ -298,7 +298,7 @@ body {
     min-width: 1240px;
     margin: 0 auto;
     padding: 30px 10px 60px 10px;
-    min-height: 1600px;
+    min-height: 1200px;
     height: auto;
 }
 
@@ -1729,7 +1729,7 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
 /* ============ 반응형 ============ */
 
 /* 프로젝트 카드는 축소하지 않고 화면 폭에 따라 3단 -> 2단 -> 1단으로 재배치 */
-@media (max-width: 1240px) {
+@media(max-width: 1240px) {
     .container {
         max-width: 100%;
         min-width: 0;
