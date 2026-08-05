@@ -49,7 +49,7 @@
   "summarySections": [
     {
       "id": "1",
-      "title": "사내포털 → Azure 클라우드 전환",
+      "title": "Azure 클라우드 전환  ",
       "highlight": {
         "value": "99%",
         "label": "초기 구축비용 절감"
@@ -90,7 +90,7 @@
         },
         {
           "keyword": "CI/CD",
-          "text": "jenkin pipline을 통해 자동화 배포 및 테스트 환경구축"
+          "text": "jenkins pipline을 통해 자동화 배포 및 테스트 환경구축"
         },
         {
           "keyword": "백업 자동화",
@@ -118,7 +118,7 @@
     },
     {
       "id": "2",
-      "title": "대규모 트래픽 아키텍처 유지 -> 소스 성능 개선",
+      "title": "대규모 트래픽 아키텍처 성능 개선",
       "highlight": {
         "value": "800K/hr",
         "label": "시간당 처리량"
@@ -175,10 +175,10 @@
     },
     {
       "id": "3",
-      "title": "API 비지니스 로직 UX 최적화",
+      "title": "엔드 유저 UX 최적화",
       "highlight": {
-        "value": "100%",
-        "label": "응답 경험 보장"
+        "value": "100% 응답",
+        "label": "응답 경험 보장 (비동기 API 전략)"
       },
       "problemTitle": "무한 대기 & 정합성 리스크",
       "solutionTitle": "트랜잭션 세분화 & Time Limit",
@@ -240,18 +240,18 @@
     },
     {
       "id": "4",
-      "title": "협업 툴 도입 및 부서 협력을 통한 CS 대응 체계화",
+      "title": "CS 대응 체계화 / 타부서 협력을 활성화",
       "highlight": {
-        "value": "52개사",
-        "label": "고객사 대응 확대 (최초 3개사)"
+        "value": "고객사 대응/업무 효율 향상",
+        "label": "대응속도 ~40% 향상, 인당 ~52개사</br>jira 이력관리, notion FAQ/공용가이드 작성"
       },
       "problemTitle": "구두/메신저 중심 대응 및 고객사 이력 관리 부재",
       "solutionTitle": "Jira/Notion 체계 도입 및 타부서 유기적 소통 협력",
-      "resultTitle": "고객사 대응 규모 17배 확장 및 CS 진척도 향상",
+      "resultTitle": "고객사 대응 속도 ~40% 향상 확장 및 CS 진척도 향상",
       "problem": [
         {
           "keyword": "CS 관리 체계 부재",
-          "text": "최초 3개 고객사 대응 시 비체계적인 구두 및 메신저 소통으로 이력 유실 및 중복 작업 발생"
+          "text": "고객사 대응 시 비체계적인 구두 및 메신저 소통으로 이력 유실 및 중복 작업 발생"
         },
         {
           "keyword": "버전 관리 미흡",
@@ -259,7 +259,7 @@
         },
         {
           "keyword": "협업 병목 현상",
-          "text": "고객사의 복잡한 요구사항이나 영업적 니즈 처리를 위한 부서 간 연동 프로세스 미비"
+          "text": "고객사의 반복 요구사항이나 영업적 니즈 처리를 위한 부서 간 연동 프로세스 미비"
         }
       ],
       "solution": [
@@ -278,8 +278,8 @@
       ],
       "result": [
         {
-          "keyword": "대응 고객사 확대",
-          "text": "CS 관리 시스템 효율화로 대응 가능 고객사 수를 최초 3개에서 52개사로 대폭 확장"
+          "keyword": "대응 속도 대폭 향상",
+          "text": "CS 관리 시스템 효율화로 기존 대비 ~40% 속도 개선"
         },
         {
           "keyword": "히스토리 데이터화",
@@ -293,9 +293,9 @@
     },
     {
       "id": "5",
-      "title": "레거시 코드 리팩토링 및 개발 컨벤션 개선",
+      "title": "레거시 코드 리팩토링",
       "highlight": {
-        "value": "Refactoring",
+        "value": "개발 컨벤션 역량 향상 및 정립",
         "label": "코드 아키텍처 현대화"
       },
       "problemTitle": "Lombok 미사용 및 MVC Model 1 기반 레거시",
