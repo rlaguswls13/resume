@@ -558,6 +558,33 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     transition: all 0.25s ease;
 }
 
+@media (min-width: 1025px) {
+    .project-report-card {
+        height: 520px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border-light) transparent;
+    }
+
+    /* Premium custom scrollbar */
+    .project-report-card::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .project-report-card::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .project-report-card::-webkit-scrollbar-thumb {
+        background: var(--border-light);
+        border-radius: 999px;
+    }
+
+    .project-report-card::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-accent);
+    }
+}
+
 .project-report-card:hover {
     box-shadow: var(--shadow-sm);
     transform: translateY(-3px);
