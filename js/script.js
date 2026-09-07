@@ -308,6 +308,29 @@ function restoreSavedTheme() {
 
 function renderProjectGrid(section) {
     const highlight = section.highlight || {};
+    const blogBaseUrl = (resumeData.blogBaseUrl || '').replace(/\/$/, '');
+
+    const renderLinks = function(links) {
+        const list = links || [];
+        if (!list.length) {
+            return '';
+        }
+
+        return `
+            <nav class="project-report-links" aria-label="관련 블로그 글">
+                ${list.map(link => {
+                    const href = /^https?:\/\//.test(link.path) ? link.path : blogBaseUrl + link.path;
+                    const typeClass = link.type ? `project-report-link--${link.type}` : '';
+                    return `
+                        <a class="project-report-link ${typeClass}" href="${href}" target="_blank" rel="noopener noreferrer">
+                            <span class="project-report-link-label">${link.label || '자세히 보기'}</span>
+                            <span class="project-report-link-arrow" aria-hidden="true">↗</span>
+                        </a>
+                    `;
+                }).join('')}
+            </nav>
+        `;
+    };
 
     const renderPoints = function(points) {
         const list = points || [];
@@ -333,6 +356,8 @@ function renderProjectGrid(section) {
                     </div>
                 ` : ''}
             </header>
+
+            ${renderLinks(section.links)}
 
             <div class="project-report-grid">
                 <article class="project-report-card project-report-card--problem">

@@ -544,6 +544,49 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     text-transform: uppercase;
 }
 
+.project-report-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -4px 0 20px;
+}
+
+.project-report-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 999px;
+    background: var(--bg-light);
+    color: var(--text-body);
+    font-size: 12px;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.project-report-link:hover,
+.project-report-link:focus-visible {
+    background: var(--primary-accent);
+    border-color: var(--primary-accent);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.project-report-link-arrow {
+    font-size: 11px;
+    opacity: 0.75;
+}
+
+.project-report-link--problem_solving {
+    border-left: 3px solid var(--primary-accent);
+}
+
+.project-report-link--project {
+    border-left: 3px solid var(--text-light);
+}
+
 .project-report-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2133,13 +2176,15 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
         transform: none !important;
     }
 
-    @page {
-        size: A4 landscape;
-        margin: 8mm;
+    /* 인쇄본에서는 외부 블로그 링크를 숨긴다 */
+    .project-report-links {
+        display: none !important;
     }
 
-    html {
-        zoom: 0.6;
+    /* A4보다 넉넉하게 페이지 크기를 키워, 3단 레이아웃이 축소(zoom) 없이 한 페이지에 들어가도록 함 */
+    @page {
+        size: 1600px 1900px;
+        margin: 20px;
     }
 
     html,
@@ -2200,6 +2245,11 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
         padding: 0 !important;
         height: auto !important;
         margin: 0 !important;
+    }
+
+    /* 좁은 화면용 브레이크포인트가 경력/자격증 영역을 전체 너비로 펼쳐놓은 상태를 인쇄 시 되돌려 3단을 유지 */
+    .right-content {
+        grid-column: auto !important;
     }
 
     .sidebar {

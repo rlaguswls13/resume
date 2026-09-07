@@ -1,4 +1,5 @@
 {
+  "blogBaseUrl": "https://rlaguswls13.github.io",
   "experience": [
     {
       "company": "휴머스온(주)",
@@ -50,6 +51,13 @@
     {
       "id": "1",
       "title": "Azure 클라우드 전환  ",
+      "links": [
+        {
+          "label": "프로젝트 상세 : 온프레미스 → 퍼블릭 클라우드 전환",
+          "path": "/projects/c",
+          "type": "project"
+        }
+      ],
       "highlight": {
         "value": "99%",
         "label": "초기 구축비용 절감"
@@ -119,6 +127,18 @@
     {
       "id": "2",
       "title": "대규모 트래픽 아키텍처 성능 개선",
+      "links": [
+        {
+          "label": "트러블슈팅 : Spring Quartz 분산 최적화 & HA 아키텍처",
+          "path": "/devlog/problem_solving/spring-quartz-ha-optimization",
+          "type": "problem_solving"
+        },
+        {
+          "label": "트러블슈팅 : ActiveMQ KahaDB 디스크 rate limit",
+          "path": "/devlog/problem_solving/activemq-kahadb-disk-rate-limit",
+          "type": "problem_solving"
+        }
+      ],
       "highlight": {
         "value": "800K/hr",
         "label": "시간당 처리량"
@@ -176,6 +196,13 @@
     {
       "id": "3",
       "title": "엔드 유저 UX 최적화",
+      "links": [
+        {
+          "label": "트러블슈팅 : 대용량 비동기 API 처리 아키텍처 및 해결 전략",
+          "path": "/devlog/problem_solving/async-api-processing-architecture",
+          "type": "problem_solving"
+        }
+      ],
       "highlight": {
         "value": "100% 응답",
         "label": "응답 경험 보장 (비동기 API 전략)"
@@ -241,6 +268,13 @@
     {
       "id": "4",
       "title": "CS 대응 체계화 / 타부서 협력을 활성화",
+      "links": [
+        {
+          "label": "프로젝트 상세 : B2B 신속한 기술 지원과 고객 엔지니어링 철학",
+          "path": "/projects/f",
+          "type": "project"
+        }
+      ],
       "highlight": {
         "value": "고객사 대응/업무 효율 향상",
         "label": "대응속도 ~40% 향상, 인당 ~52개사</br>jira 이력관리, notion FAQ/공용가이드 작성"
@@ -294,6 +328,18 @@
     {
       "id": "5",
       "title": "레거시 코드 리팩토링",
+      "links": [
+        {
+          "label": "트러블슈팅 : 레거시 Exception 혼재 → AOP 예외 처리/공통 응답 개선",
+          "path": "/devlog/problem_solving/aop-exception-handling-common-response",
+          "type": "problem_solving"
+        },
+        {
+          "label": "프로젝트 상세 : 레거시 코드로 인한 메모리 누수 해결",
+          "path": "/projects/a",
+          "type": "project"
+        }
+      ],
       "highlight": {
         "value": "개발 컨벤션 역량 향상 및 정립",
         "label": "코드 아키텍처 현대화"
