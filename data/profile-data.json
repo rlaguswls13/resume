@@ -1,7 +1,7 @@
 {
   "profile": {
     "name": "김현진",
-    "jobTitle": "Full-Stack Developer",
+    "jobTitle": "Backend Engineer",
     "image": "assets/images/2022_picture.jpg"
   },
   "contact": [
@@ -83,7 +83,7 @@
     }
   ],
   "introduction": {
-    "subtitle": "실제 개발 프로젝트 성과와 정량적 지표 기반의 풀스택 개발 전문가",
+    "subtitle": "대규모 트래픽 처리와 분산 아키텍처 설계 경험, 정량적 지표로 증명하는 백엔드 엔지니어",
     "cards": [
       {
         "number": "01",
