@@ -131,6 +131,8 @@
     --border-light:          var(--primitive-forest-200);
     --shadow-sm:             0 4px 15px var(--primitive-shadow-forest-sm);
     --shadow-md:             0 8px 20px var(--primitive-shadow-forest-md);
+    --card-bg:               linear-gradient(135deg, rgba(250, 252, 250, 0.94), rgba(243, 247, 244, 0.94));
+    --card-bg-hover:         linear-gradient(135deg, #ffffff, #edf3ee);
     --card-accent-glow:      var(--primitive-glow-forest);
     --accent-tint-strong:    rgba(58, 90, 64, 0.16);
     --accent-tint-border:    rgba(58, 90, 64, 0.55);
@@ -151,6 +153,8 @@
     --border-light:          var(--primitive-slate-200);
     --shadow-sm:             0 4px 15px var(--primitive-shadow-ocean-sm);
     --shadow-md:             0 8px 20px var(--primitive-shadow-ocean-md);
+    --card-bg:               linear-gradient(135deg, rgba(248, 250, 254, 0.94), rgba(241, 245, 252, 0.94));
+    --card-bg-hover:         linear-gradient(135deg, #ffffff, #edf2f9);
     --card-accent-glow:      var(--primitive-glow-ocean);
     --accent-tint-strong:    rgba(30, 64, 175, 0.14);
     --accent-tint-border:    rgba(30, 64, 175, 0.55);
@@ -171,6 +175,8 @@
     --border-light:          var(--primitive-gray-200);
     --shadow-sm:             0 4px 15px var(--primitive-shadow-indigo-sm);
     --shadow-md:             0 8px 20px var(--primitive-shadow-indigo-md);
+    --card-bg:               linear-gradient(135deg, rgba(251, 251, 254, 0.94), rgba(245, 245, 251, 0.94));
+    --card-bg-hover:         linear-gradient(135deg, #ffffff, #f0f0fa);
     --card-accent-glow:      var(--primitive-glow-indigo);
     --accent-tint-strong:    rgba(99, 102, 241, 0.16);
     --accent-tint-border:    rgba(99, 102, 241, 0.55);
@@ -300,6 +306,106 @@ body {
     padding: 30px 10px 60px 10px;
     min-height: 1200px;
     height: auto;
+}
+
+/* ============ 기업 맞춤형(Tailored) 배너 & 프로필 배지 ============ */
+.company-tailored-banner {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--accent-tint-strong);
+    border: 1px solid var(--border-medium);
+    border-left: 4px solid var(--primary-accent);
+    border-radius: 8px;
+    padding: 12px 20px;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+    box-shadow: 0 4px 12px var(--shadow-sm);
+}
+
+.banner-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+.banner-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--primary-accent);
+    color: #ffffff;
+    font-size: var(--font-size-2xs);
+    font-weight: 700;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.banner-company {
+    font-size: var(--font-size-subtitle);
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.banner-role {
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    color: var(--primary-accent);
+}
+
+.banner-note {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.banner-reset-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid var(--border-medium);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.banner-reset-btn:hover {
+    background: #ffffff;
+    color: var(--text-dark);
+    border-color: var(--primary-accent);
+    box-shadow: 0 2px 6px var(--shadow-sm);
+}
+
+.profile-tailored-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    padding: 3px 10px;
+    background: var(--accent-tint-strong);
+    border: 1px solid var(--border-medium);
+    border-radius: 12px;
+    font-size: var(--font-size-2xs);
+    font-weight: 600;
+    color: var(--primary-accent);
+}
+
+.profile-tailored-badge .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary-accent);
 }
 
 /* ============ 페이지 이동 버튼 ============ */
@@ -2160,6 +2266,7 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
 }
 
 @media print {
+    /* 장식용 가상 요소 제거 */
     .sidebar::before,
     .introduction::before,
     .right-content::before,
@@ -2168,45 +2275,51 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
         display: none !important;
     }
 
-    .card,
-    .domain-card,
-    .project-report-card {
-        background: white !important;
-        box-shadow: none !important;
-        transform: none !important;
-    }
-
-    /* 인쇄본에서는 외부 블로그 링크를 숨긴다 */
-    .project-report-links {
+    /* 인쇄본에서는 외부 블로그 링크 및 웹 전용 인터랙티브 요소 숨김 */
+    .project-report-links,
+    .theme-switcher,
+    .print-btn,
+    .page-nav-btn,
+    .summary-back-btn,
+    .summary-bookmarks,
+    .banner-reset-btn,
+    .profile-tailored-badge {
         display: none !important;
     }
 
-    /* A4보다 넉넉하게 페이지 크기를 키워, 3단 레이아웃이 축소(zoom) 없이 한 페이지에 들어가도록 함 */
+    /* A4 표준 가로(Landscape) 인쇄 규격 (297mm x 210mm) */
     @page {
-        size: 1600px 1900px;
-        margin: 20px;
+        size: A4 landscape;
+        margin: 8mm 10mm;
     }
 
     html,
     body {
         height: auto !important;
+        min-height: 0 !important;
         overflow: visible !important;
         background: white !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+        font-family: var(--font-sans) !important;
+        font-size: 10px !important;
+        line-height: 1.38 !important;
+        color: var(--text-body) !important;
     }
 
-    .theme-switcher,
-    .print-btn,
-    .page-nav-btn,
-    .summary-back-btn,
-    .summary-bookmarks {
-        display: none !important;
+    /* 현대 웹 타이포그래피 가독성 규칙 (modern-web-guidance) */
+    h1, h2, h3, h4, .name, .project-report-title {
+        text-wrap: balance;
+    }
+
+    p, li, .project-report-desc, .responsibilities li, .intro-subtitle, .card p {
+        text-wrap: pretty;
     }
 
     /* 화면 전환용 페이지 스테이지를 인쇄 시 일반 문서 흐름으로 전환 */
     .page-stage {
         height: auto !important;
+        min-height: 0 !important;
         overflow: visible !important;
     }
 
@@ -2217,6 +2330,7 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
         visibility: visible !important;
         pointer-events: auto !important;
         min-height: 0 !important;
+        height: auto !important;
         width: 100% !important;
         transform: none !important;
         animation: none !important;
@@ -2235,224 +2349,382 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
         display: block !important;
     }
 
+    /* ==========================================================================
+       1페이지 (#resumePage): A4 가로(Landscape) 1024px 3단 포트폴리오 대시보드
+       - 좌측 (235px): 프로필/연락처/기술스택/학력
+       - 중앙 (385px): 핵심 강점 자기소개 5개 카드
+       - 우측 (1fr, 약 380px): 경력 상세 & 자격증
+       - 세로 min-height: 0 해제 및 정밀 여백으로 A4 가로 1페이지 완벽 수납
+       ========================================================================== */
     .container {
         display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 10px !important;
-        max-width: 100% !important;
-        min-width: unset !important;
+        grid-template-columns: 235px 385px 1fr !important;
+        gap: 12px !important;
+        max-width: 1024px !important;
         width: 100% !important;
         padding: 0 !important;
+        min-height: 0 !important;
         height: auto !important;
-        margin: 0 !important;
+        margin: 0 auto !important;
     }
 
-    /* 좁은 화면용 브레이크포인트가 경력/자격증 영역을 전체 너비로 펼쳐놓은 상태를 인쇄 시 되돌려 3단을 유지 */
-    .right-content {
-        grid-column: auto !important;
-    }
-
-    .sidebar {
-        height: auto !important;
-        min-height: unset !important;
+    .company-tailored-banner {
+        grid-column: 1 / -1 !important;
+        border: 1px solid var(--border-light) !important;
+        border-left: 4px solid var(--primary-accent) !important;
+        background: var(--accent-tint-strong) !important;
+        padding: 6px 14px !important;
+        margin-bottom: 2px !important;
         box-shadow: none !important;
-        border: 1px solid var(--border-light);
-        border-radius: 8px;
-        padding: 16px 15px !important;
+        font-size: 9.5px !important;
+        border-radius: 6px !important;
+    }
+
+    .banner-badge {
+        font-size: 8px !important;
+        padding: 2px 6px !important;
+        background: var(--primary-accent) !important;
+        color: #ffffff !important;
+        border-radius: 3px !important;
+    }
+
+    .banner-company {
+        font-size: 11.5px !important;
+        font-weight: 700 !important;
+        color: var(--text-dark) !important;
+    }
+
+    .banner-role {
+        font-size: 10px !important;
+        color: var(--text-dark) !important;
+    }
+
+    .banner-note {
+        font-size: 9px !important;
+        color: var(--text-medium) !important;
+    }
+
+    /* 1열: 사이드바 (기존 테마 스타일 복원) */
+    .sidebar {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        box-shadow: none !important;
+        border: 1px solid var(--border-light) !important;
+        border-radius: 8px !important;
+        padding: 10px 10px !important;
+        background: var(--card-bg, #fcfdfe) !important;
         line-height: 1.3 !important;
     }
 
-    /* 프로필 영역이 세로로 너무 길어져 2페이지로 넘어가는 것을 방지하기 위한 여백/크기 축소 */
     .profile {
-        margin-bottom: 14px !important;
-        padding-bottom: 14px !important;
+        margin-bottom: 8px !important;
+        padding-bottom: 6px !important;
+        border-bottom: 1.5px solid var(--border-light) !important;
     }
 
     .profile-image {
-        margin-bottom: 10px !important;
-    }
-
-    .profile-image img {
-        width: 70px !important;
-        height: 70px !important;
-        border-width: 2px !important;
-    }
-
-    .name {
-        font-size: 18px !important;
-        margin-bottom: 3px !important;
-    }
-
-    .sidebar h3 {
-        margin-bottom: 8px !important;
-    }
-
-    .sidebar h4 {
         margin-bottom: 5px !important;
     }
 
+    .profile-image img {
+        width: 52px !important;
+        height: 52px !important;
+        border: 2px solid var(--primary-accent) !important;
+    }
+
+    .name {
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        color: var(--text-dark) !important;
+        margin-bottom: 2px !important;
+    }
+
+    .job-title {
+        font-size: 10.5px !important;
+        font-weight: 600 !important;
+        color: var(--primary-accent) !important;
+        margin-bottom: 0 !important;
+    }
+
+    .sidebar h3 {
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        margin-bottom: 4px !important;
+        padding-bottom: 2px !important;
+        border-bottom: 1.5px solid var(--border-light) !important;
+        color: var(--text-dark) !important;
+    }
+
+    .sidebar h4 {
+        font-size: 9.5px !important;
+        font-weight: 600 !important;
+        margin-bottom: 2px !important;
+        color: var(--text-dark) !important;
+    }
+
     .contact {
-        margin-bottom: 12px !important;
+        margin-bottom: 8px !important;
     }
 
     .contact li {
-        margin-bottom: 4px !important;
+        margin-bottom: 2.5px !important;
+        font-size: 8.5px !important;
+        line-height: 1.3 !important;
+        color: var(--text-body) !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+    }
+
+    .contact li span:first-child {
+        font-size: 10px !important;
+        min-width: 14px !important;
+        display: inline-block !important;
+    }
+
+    .contact li span:last-child,
+    .contact li a {
+        font-size: 8.5px !important;
+        font-weight: 500 !important;
+        color: var(--text-dark) !important;
+        text-decoration: none !important;
     }
 
     .skills {
-        margin-bottom: 12px !important;
+        margin-bottom: 8px !important;
     }
 
     .skill-category {
-        margin-bottom: 6px !important;
+        margin-bottom: 4px !important;
     }
 
     .skill-tags {
-        gap: 5px !important;
+        gap: 2.5px !important;
     }
 
     .tag {
-        padding: 3px 9px !important;
+        padding: 1.5px 5.5px !important;
+        font-size: 8px !important;
+        border-radius: 3px !important;
+        background: var(--bg-lighter, #edf1f7) !important;
+        color: var(--text-dark) !important;
+        border: 1px solid var(--border-light) !important;
     }
 
     .education {
-        gap: 8px !important;
-        padding-top: 16px !important;
+        gap: 3px !important;
+        padding-top: 4px !important;
+        border-top: 1px solid var(--border-light) !important;
     }
 
     .education-items {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 4px 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 3px !important;
     }
 
     .education-item {
         margin-bottom: 0 !important;
     }
 
-    .introduction,
-    .right-content {
+    .education-item h4 {
+        font-size: 9px !important;
+        font-weight: 600 !important;
+        margin-bottom: 1px !important;
+        color: var(--text-dark) !important;
+    }
+
+    .education-item p {
+        font-size: 8px !important;
+        line-height: 1.25 !important;
+        color: var(--text-medium) !important;
+    }
+
+    /* 2열: 자기소개 (385px 폭으로 카드의 완성도 강화) */
+    .introduction {
+        grid-column: 2 !important;
+        grid-row: auto !important;
         height: auto !important;
-        min-height: unset !important;
+        min-height: 0 !important;
         box-shadow: none !important;
-        border: 1px solid var(--border-light);
-        border-radius: 8px;
-        padding: 16px 15px !important;
+        border: 1px solid var(--border-light) !important;
+        border-radius: 8px !important;
+        padding: 10px 12px !important;
+        background: var(--card-bg, #ffffff) !important;
     }
 
-    .introduction h2,
-    .right-content h2 {
-        margin-bottom: 10px !important;
-        padding-bottom: 8px !important;
+    .introduction h2 {
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        margin-bottom: 4px !important;
+        padding-bottom: 2px !important;
+        border-bottom: 2px solid var(--primary-accent) !important;
+        color: var(--text-dark) !important;
     }
 
-    /* 자기소개 카드 영역 압축 */
     .intro-subtitle {
-        margin-bottom: 12px !important;
+        font-size: 9px !important;
+        line-height: 1.35 !important;
+        margin-bottom: 6px !important;
+        color: var(--text-medium) !important;
     }
 
     .cards-grid {
-        gap: 8px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 5px !important;
     }
 
     .card {
-        padding: 10px 12px !important;
+        padding: 5px 8px !important;
+        border-radius: 6px !important;
+        border: 1px solid var(--border-light) !important;
+        border-left: 3.5px solid var(--primary-accent) !important;
+        background: var(--card-bg) !important;
+        box-shadow: none !important;
     }
 
     .card-number {
-        font-size: 16px !important;
-        margin-bottom: 4px !important;
+        font-size: 9px !important;
+        font-weight: 700 !important;
+        color: var(--primary-accent) !important;
+        font-family: var(--font-mono) !important;
+        background: none !important;
+        padding: 0 !important;
+        display: inline-block !important;
+        margin-bottom: 1.5px !important;
     }
 
     .card h3 {
-        font-size: 12.5px !important;
-        margin-bottom: 4px !important;
+        font-size: 10.5px !important;
+        font-weight: 700 !important;
+        margin-bottom: 1.5px !important;
         line-height: 1.25 !important;
+        color: var(--text-dark) !important;
     }
 
     .card p {
-        font-size: 11px !important;
-        line-height: 1.3 !important;
+        font-size: 8.5px !important;
+        line-height: 1.32 !important;
+        color: var(--text-body) !important;
     }
 
-    /* 경력/자격증 영역 압축 */
+    /* 3열: 경력 & 자격증 (380px 폭, 정돈된 타임라인 감성) */
+    .right-content {
+        grid-column: 3 !important;
+        grid-row: auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        box-shadow: none !important;
+        border: 1px solid var(--border-light) !important;
+        border-radius: 8px !important;
+        padding: 10px 12px !important;
+        background: var(--card-bg, #ffffff) !important;
+    }
+
+    .right-content h2 {
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        margin-bottom: 4px !important;
+        padding-bottom: 2px !important;
+        border-bottom: 2px solid var(--primary-accent) !important;
+        color: var(--text-dark) !important;
+    }
+
     .experience {
-        margin-bottom: 16px !important;
+        margin-bottom: 6px !important;
     }
 
     .experience-item,
     .project-item {
-        margin-bottom: 8px !important;
-        padding-bottom: 8px !important;
+        margin-bottom: 5px !important;
+        padding-bottom: 4px !important;
+        border-bottom: 1px dashed var(--border-light) !important;
+    }
+
+    .experience-item:last-child,
+    .project-item:last-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        border-bottom: none !important;
     }
 
     .projects {
-        margin-bottom: 10px !important;
+        margin-bottom: 0 !important;
     }
 
     .exp-header,
     .project-header {
-        margin-bottom: 5px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: baseline !important;
+        margin-bottom: 2px !important;
     }
 
     .exp-header h3 {
-        font-size: 13.5px !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        color: var(--text-dark) !important;
     }
 
     .project-header h3 {
-        font-size: 12.5px !important;
+        font-size: 10.5px !important;
+        font-weight: 700 !important;
+        color: var(--text-dark) !important;
+    }
+
+    .position {
+        font-size: 10px !important;
+        font-weight: 600 !important;
+        color: var(--primary-accent) !important;
+    }
+
+    .date {
+        font-size: 8.5px !important;
+        color: var(--text-light) !important;
     }
 
     .project-description {
-        margin-bottom: 6px !important;
-        font-size: 11.5px !important;
+        margin-bottom: 2px !important;
+        font-size: 8.5px !important;
+        color: var(--text-medium) !important;
     }
 
     .responsibilities li,
     .project-details li {
-        margin-bottom: 4px !important;
-        font-size: 11.5px !important;
+        margin-bottom: 2px !important;
+        font-size: 9px !important;
         line-height: 1.35 !important;
+        color: var(--text-body) !important;
     }
 
-    /* 요약/도메인 페이지 폭을 A4 폭에 맞게 축소 */
+    /* ==========================================================================
+       2~6페이지 (#summaryPage): A4 가로 전면 프로젝트 리포트 (각 1페이지 완결)
+       - 가로 1024px 폭을 3열로 분할: [문제] | [해결] | [성과] (각 열 약 330px)
+       - 테마 매칭: 상단 컬러 포인트 보더 및 소프트 틴트 배경 적용
+       ========================================================================== */
     .summary-wrapper,
     .domain-wrapper {
-        max-width: 100% !important;
+        max-width: 1024px !important;
         min-width: unset !important;
         width: 100% !important;
-        margin: 0 !important;
+        margin: 0 auto !important;
         padding: 0 !important;
     }
 
     .summary-panel,
     .domain-page-panel {
         box-shadow: none !important;
-        border-radius: 8px;
+        border-radius: 8px !important;
+        min-height: 0 !important;
+        height: auto !important;
+        border: 1px solid var(--border-light) !important;
+        background: #ffffff !important;
+        padding: 14px 16px !important;
     }
 
-    .domain-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-
-    /* 업무이력(요약 탭) 카드는 인쇄 시 항상 3단으로 표시 */
-    .project-report-grid {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 16px !important;
-    }
-
-    /* 카드/항목이 페이지 중간에서 잘리지 않도록 */
-    .card,
-    .experience-item,
-    .education-item,
-    .domain-card,
-    .project-report-card {
-        break-inside: avoid;
-        page-break-inside: avoid;
-    }
-
-    /* 업무이력(요약 탭) 항목을 각각 개별 페이지로 출력 */
     .summary-panel-item {
         display: block !important;
         page-break-after: always;
@@ -2463,6 +2735,326 @@ body.dock-mode .page-nav-btn--prev:not(:disabled):hover {
     .summary-panel-item:last-child {
         page-break-after: auto;
         break-after: auto;
+    }
+
+    .project-report {
+        padding: 2px 0 !important;
+    }
+
+    .project-report-head {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-bottom: 10px !important;
+        padding-bottom: 6px !important;
+        border-bottom: 2px solid var(--primary-accent) !important;
+    }
+
+    .project-report-title {
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: var(--text-dark) !important;
+    }
+
+    .project-report-highlight {
+        display: flex !important;
+        align-items: baseline !important;
+        gap: 6px !important;
+        font-size: 17px !important;
+        font-weight: 700 !important;
+        color: var(--primary-accent) !important;
+        background: var(--accent-tint-strong) !important;
+        border: 1px solid var(--border-light) !important;
+        padding: 3px 10px !important;
+        border-radius: 6px !important;
+    }
+
+    .project-report-highlight-label {
+        font-size: 9.5px !important;
+        font-weight: 500 !important;
+        color: var(--text-medium) !important;
+    }
+
+    /* 가로 3열 나란히 배치: 각 카드 약 330px 폭으로 높은 가독성 확보 */
+    .project-report-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    .project-report-card {
+        padding: 10px 12px !important;
+        border-radius: 8px !important;
+        border: 1px solid var(--border-light) !important;
+        background: var(--bg-light) !important;
+        box-shadow: none !important;
+    }
+
+    .project-report-card--problem {
+        border-top: 3.5px solid var(--text-light) !important;
+        background: var(--bg-light) !important;
+    }
+
+    .project-report-card--solution {
+        border: 1.5px solid var(--primary-accent) !important;
+        border-top: 3.5px solid var(--primary-accent) !important;
+        background: var(--accent-tint-strong) !important;
+    }
+
+    .project-report-card--result {
+        border-top: 3.5px solid var(--text-dark) !important;
+        background: var(--bg-light) !important;
+    }
+
+    .project-report-card h3 {
+        display: flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+        font-size: 11.5px !important;
+        font-weight: 700 !important;
+        margin-bottom: 6px !important;
+        padding-bottom: 4px !important;
+        border-bottom: 1px solid var(--border-light) !important;
+        color: var(--text-dark) !important;
+    }
+
+    .project-report-card--solution h3 {
+        border-bottom-color: var(--accent-tint-border, var(--border-light)) !important;
+    }
+
+    .project-report-card-text em {
+        font-size: 9.5px !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        margin-right: 3px !important;
+        opacity: 0.85;
+    }
+
+    .project-report-badge {
+        font-size: 10px !important;
+        width: 17px !important;
+        height: 17px !important;
+        line-height: 17px !important;
+        text-align: center !important;
+        border-radius: 50% !important;
+        flex-shrink: 0 !important;
+    }
+
+    .project-report-card--problem .project-report-badge {
+        background: var(--text-light) !important;
+        color: var(--bg-white) !important;
+    }
+
+    .project-report-card--solution .project-report-badge {
+        background: var(--primary-accent) !important;
+        color: var(--bg-white) !important;
+    }
+
+    .project-report-card--result .project-report-badge {
+        background: var(--text-dark) !important;
+        color: var(--bg-white) !important;
+    }
+
+    .project-report-card--solution .project-report-step {
+        color: var(--primary-accent) !important;
+    }
+
+    .project-report-card--result .project-report-step {
+        color: var(--text-dark) !important;
+    }
+
+    .project-report-item {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 5px !important;
+        margin-bottom: 4px !important;
+        padding-bottom: 3px !important;
+        border-bottom: 1px dotted var(--border-light) !important;
+        font-size: 9px !important;
+        line-height: 1.35 !important;
+        color: var(--text-body) !important;
+    }
+
+    .project-report-item:last-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        border-bottom: none !important;
+    }
+
+    .project-report-step {
+        font-size: 8.5px !important;
+        font-weight: 700 !important;
+        color: var(--text-light) !important;
+        min-width: 12px !important;
+        padding-top: 1px !important;
+    }
+
+    .project-report-item-content {
+        flex: 1 !important;
+    }
+
+    .project-report-keyword {
+        display: inline-block !important;
+        font-size: 9px !important;
+        font-weight: 700 !important;
+        color: var(--text-dark) !important;
+        background: var(--bg-white) !important;
+        padding: 1px 5px !important;
+        border-radius: 3px !important;
+        margin-right: 3px !important;
+        border: 1px solid var(--border-light) !important;
+    }
+
+    .project-report-card--problem .project-report-keyword {
+        border-color: var(--text-light) !important;
+    }
+
+    .project-report-card--solution .project-report-keyword {
+        border-color: var(--primary-accent) !important;
+        color: var(--primary-accent) !important;
+    }
+
+    .project-report-card--result .project-report-keyword {
+        border-color: var(--text-dark) !important;
+    }
+
+    .project-report-card--result .project-report-item:last-child .project-report-step {
+        background: var(--text-dark) !important;
+        color: var(--bg-white) !important;
+        border-radius: 50% !important;
+        width: 12px !important;
+        height: 12px !important;
+        line-height: 12px !important;
+        text-align: center !important;
+    }
+
+    .project-report-card--result .project-report-item:last-child .project-report-keyword {
+        background: var(--text-dark) !important;
+        color: var(--bg-white) !important;
+        border-color: var(--text-dark) !important;
+    }
+
+    .project-report-desc {
+        display: inline !important;
+        font-size: 9px !important;
+        line-height: 1.35 !important;
+    }
+
+    /* ==========================================================================
+       7페이지 (#domainPage): A4 가로 4열 도메인 인포그래픽 리포트 (1페이지 완결)
+       ========================================================================== */
+    .domain-header {
+        margin-bottom: 10px !important;
+        padding-bottom: 6px !important;
+        border-bottom: 2px solid var(--primary-accent) !important;
+    }
+
+    .domain-header h2 {
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: var(--text-dark) !important;
+    }
+
+    .domain-header h2 span {
+        font-size: 11px !important;
+        font-weight: 500 !important;
+        color: var(--text-medium) !important;
+    }
+
+    .domain-subtitle {
+        font-size: 10px !important;
+        color: var(--text-medium) !important;
+        margin-top: 2px !important;
+    }
+
+    .domain-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .domain-card {
+        padding: 8px 10px !important;
+        border-radius: 8px !important;
+        border: 1px solid var(--border-light) !important;
+        border-top: 3px solid var(--primary-accent) !important;
+        background: var(--card-bg, #fcfdfe) !important;
+    }
+
+    .domain-card-head {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin-bottom: 5px !important;
+        padding-bottom: 3px !important;
+        border-bottom: 1px solid var(--border-light) !important;
+    }
+
+    .domain-icon {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 22px !important;
+        height: 22px !important;
+        background: var(--accent-tint-strong) !important;
+        border-radius: 50% !important;
+        font-size: 11px !important;
+    }
+
+    .domain-card h3 {
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        color: var(--text-dark) !important;
+    }
+
+    .domain-card-title-en {
+        font-size: 8.5px !important;
+        color: var(--primary-accent) !important;
+    }
+
+    .domain-item-list li {
+        font-size: 8.5px !important;
+        line-height: 1.32 !important;
+        color: var(--text-body) !important;
+        margin-bottom: 2px !important;
+    }
+
+    .domain-item-list li span {
+        font-size: 8px !important;
+        color: var(--text-light) !important;
+    }
+
+    .domain-interests {
+        padding: 8px 12px !important;
+        border-radius: 8px !important;
+        border: 1px solid var(--border-light) !important;
+        background: var(--accent-tint-strong) !important;
+    }
+
+    .domain-interests-label strong {
+        font-size: 10.5px !important;
+        color: var(--text-dark) !important;
+    }
+
+    .domain-interest-tag {
+        font-size: 9px !important;
+        padding: 2px 7px !important;
+        background: var(--bg-white) !important;
+        border: 1px solid var(--border-light) !important;
+        border-radius: 4px !important;
+        color: var(--primary-accent) !important;
+    }
+
+    /* 카드/항목이 페이지 중간에서 잘리지 않도록 설정 */
+    .card,
+    .experience-item,
+    .education-item,
+    .domain-card,
+    .project-report-card,
+    .project-report-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     .experience-item,
