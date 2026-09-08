@@ -3,3 +3,9 @@
 .agents
 .agent
 .omc
+wiki/
+node_modules/
+package.json
+package-lock.json
+*.png
+*.pdf
