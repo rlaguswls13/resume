@@ -51,14 +51,61 @@ async function loadData() {
             domainResponse.json()
         ]);
 
+        let mergedProfile = { ...profileData };
+        let mergedProject = { ...projectData };
+
+        // URL 파라미터 기반 기업 맞춤형 데이터 로드 (?company=xxx)
+        const urlParams = new URLSearchParams(window.location.search);
+        const company = urlParams.get('company');
+
+        if (company) {
+            try {
+                const companyResponse = await fetch(`data/companies/${encodeURIComponent(company)}.json`);
+                if (companyResponse.ok) {
+                    const customData = await companyResponse.json();
+
+                    if (customData.profile) {
+                        mergedProfile.profile = {
+                            ...mergedProfile.profile,
+                            ...customData.profile
+                        };
+                    }
+                    if (customData.introduction) {
+                        mergedProfile.introduction = {
+                            ...mergedProfile.introduction,
+                            ...customData.introduction
+                        };
+                    }
+                    if (customData.skills) {
+                        mergedProfile.skills = {
+                            ...mergedProfile.skills,
+                            ...customData.skills
+                        };
+                    }
+                    if (customData.experience) {
+                        mergedProject.experience = customData.experience;
+                    }
+                    if (customData.summarySections) {
+                        mergedProject.summarySections = customData.summarySections;
+                    }
+                    if (customData.targetCompanyBadge) {
+                        mergedProfile.targetCompanyBadge = customData.targetCompanyBadge;
+                    }
+                }
+            } catch (err) {
+                console.warn(`[Custom Mode] 맞춤형 회사 데이터를 불러오지 못했습니다 (${company}):`, err);
+            }
+        }
+
         resumeData = {
-            ...profileData,
-            ...projectData
+            ...mergedProfile,
+            ...mergedProject
         };
 
-        summarySections = projectData.summarySections || [];
+        summarySections = mergedProject.summarySections || [];
         domainKnowledge = domainData || {};
 
+        renderTailoredBanner();
         renderContent();
         renderSummaryContent();
         renderDomainContent();
@@ -67,10 +114,38 @@ async function loadData() {
     }
 }
 
+// 기업 맞춤형 배너 렌더링
+function renderTailoredBanner() {
+    const bannerEl = document.getElementById('companyTailoredBanner');
+    if (!bannerEl) return;
+
+    const { targetCompanyBadge } = resumeData;
+    if (targetCompanyBadge) {
+        bannerEl.innerHTML = `
+            <div class="banner-content">
+                <div class="banner-title-group">
+                    <span class="banner-badge">Target Fit</span>
+                    <span class="banner-company">${targetCompanyBadge.name}</span>
+                    <span class="banner-role">${targetCompanyBadge.role}</span>
+                </div>
+                <p class="banner-note">${targetCompanyBadge.note || ''}</p>
+            </div>
+            <a href="${window.location.pathname}" class="banner-reset-btn" title="공통 기본 이력서 보기">
+                <span>기본 이력서 보기</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </a>
+        `;
+        bannerEl.style.display = 'flex';
+    } else {
+        bannerEl.style.display = 'none';
+        bannerEl.innerHTML = '';
+    }
+}
+
 // 프로필 렌더링
 function renderProfile() {
     const profileEl = document.getElementById('profile');
-    const { profile } = resumeData;
+    const { profile, targetCompanyBadge } = resumeData;
     
     profileEl.innerHTML = `
         <div class="profile-image">
@@ -78,6 +153,12 @@ function renderProfile() {
         </div>
         <h1 class="name">${profile.name}</h1>
         <p class="job-title">${profile.jobTitle}</p>
+        ${targetCompanyBadge ? `
+            <div class="profile-tailored-badge">
+                <span class="badge-dot"></span>
+                <span class="badge-text">${targetCompanyBadge.name} 맞춤</span>
+            </div>
+        ` : ''}
     `;
 }
 
