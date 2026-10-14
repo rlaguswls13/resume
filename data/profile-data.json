@@ -63,23 +63,28 @@
   "education": [
     {
       "school": "KH정보교육원",
-      "degree": "Python & Elasticsearch 금융솔루션",
+      "degree": "금융 AI/빅데이터 연구과정 (Python·Elasticsearch)",
       "period": "2026.05 - 현재"
     },
     {
       "school": "서울사이버대학교",
-      "degree": "컴퓨터공학과 졸업",
+      "degree": "컴퓨터공학과 졸업 (공학사 편입)",
       "period": "2024.03 - 2026.02"
     },
     {
       "school": "KH정보교육원",
-      "degree": "UI/UX 웹 콘텐츠 융합 개발자",
+      "degree": "UI/UX 웹 콘텐츠 융합 개발자 과정 (888시간)",
       "period": "2021.03 - 2021.08"
     },
     {
       "school": "서울과학기술대학교",
-      "degree": "신소재공학과 졸업 (공학사)",
+      "degree": "신소재공학과 졸업 (공학사, 평점 3.6)",
       "period": "2012.03 - 2018.02"
+    },
+    {
+      "school": "영훈고등학교",
+      "degree": "자연계 (이과) 졸업",
+      "period": "2009.03 - 2012.02"
     }
   ],
   "introduction": {
