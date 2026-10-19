@@ -50,5 +50,7 @@
 
 ## 검증
 
+자동 점검: `node test-playwright/verify-site.js`(3개 뷰 렌더링, 경력 데이터, `?company=` 폴백, 블로그 링크, 인쇄 레이아웃·페이지 수). 데이터나 `js/script.js`·`css/style.css`를 바꾼 뒤 실행한다.
+
 정적 서버로 서빙 후 3개 뷰(`#resumePage` / `#summaryPage` / `#domainPage`)와 인쇄(🖨️ `printResume()`) 출력을 확인한다. 인쇄는 `@media print`에서 데스크톱 3단 레이아웃을 축소 없이 페이지당 한 화면으로 낸다.
 

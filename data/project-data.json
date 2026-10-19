@@ -2,6 +2,12 @@
   "blogBaseUrl": "https://rlaguswls13.github.io",
   "experience": [
     {
+      "company": "코너스톤앤컴퍼니",
+      "position": "AX",
+      "period": "2026.11 -",
+      "responsibilities": []
+    },
+    {
       "company": "휴머스온(주)",
       "position": "개발2팀 / 프로",
       "period": "2024.08 - 2026.02",

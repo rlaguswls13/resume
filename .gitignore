@@ -10,3 +10,5 @@ package-lock.json
 *.png
 *.pdf
 scratch/
+# 기업 맞춤 웹 이력서 데이터는 공개 배포하지 않는다. 보관 위치: 외부 Wiki 99-archive/기업맞춤-웹이력서/
+data/companies/*.json
